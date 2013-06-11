@@ -10,14 +10,17 @@
 
 <section class="wrapper">
   <header class="main_header">
-    <h1 class="logo">Codech</h1>
+    <h1 class="logo"><%= link_to 'Codech', :controller => :home, :action => :index %></h1>
     <nav class="landmarks">
 
     </nav>
   </header>
-  <section>
+  <section class="content">
     <%= yield %>
   </section>
+  <footer>
+    <%= link_to 'Admin page', :controller => :admin, :action => :index %>
+  </footer>
 </section>
 
 </body>

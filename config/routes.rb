@@ -1,4 +1,6 @@
 MdGcGcAip2013::Application.routes.draw do
+  get "admin/index"
+
   get "home/index"
 
   # The priority is based upon order of creation:
