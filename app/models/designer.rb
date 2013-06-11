@@ -5,7 +5,7 @@ class Designer < ActiveRecord::Base
   has_many :products
   has_one :image, :as => :image_ref
 
-  # handy methods
+  # handy method
   def full_name
     "#{first_name} #{last_name}"
   end
