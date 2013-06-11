@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * This is a manifest file that will be compiled into application.css, which will include all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
@@ -11,3 +11,49 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+    margin: 0px;
+    background: #222222;
+    color: #EEEEEE;
+}
+
+/*
+ SITE TEMPLATE CSS
+*/
+
+.wrapper {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.main_header {
+    background-color: #000000;
+    overflow: auto;
+    position: relative;
+}
+
+.logo {
+    display: inline;
+    float: left;
+}
+
+.landmarks {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color: red;  /* Debug purpose*/
+}
+
+.sidebar {
+    float: left;
+    width: 300px;
+    background-color: #444444;
+    height: 400px;
+}
+
+.content {
+    float: right;
+    width: 600px;
+    height: 400px;
+}
