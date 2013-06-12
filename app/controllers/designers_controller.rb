@@ -111,4 +111,14 @@ class DesignersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # DESIGNED /designers/1/designed
+  def designed
+    @designer = Designer.find(params[:id])
+    #@products = @designer.products
+
+    respond_to do |format|
+      format.html # designed.html.erb
+    end
+  end
 end

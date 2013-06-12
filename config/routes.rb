@@ -8,7 +8,11 @@ MdGcGcAip2013::Application.routes.draw do
   resources :products
 
 
-  resources :designers
+  resources :designers do
+    member do
+      get 'designed'
+    end
+  end
 
   get "admin/index"
 
