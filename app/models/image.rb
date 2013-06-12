@@ -3,4 +3,8 @@ class Image < ActiveRecord::Base
 
   # association
   belongs_to :image_ref, :polymorphic => true
+
+  def complete_name
+    "#{name}.#{extension}"
+  end
 end

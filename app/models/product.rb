@@ -1,7 +1,6 @@
 class Product < ActiveRecord::Base
   attr_accessible :name
 
-  #association
+  # association
   belongs_to :designer
-
 end
