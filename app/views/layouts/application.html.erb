@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<section class="wrapper">
-  <header class="main_header">
+<section id="container">
+  <header id="main_header">
     <h1 class="logo"><%= link_to 'Codech', :controller => :home, :action => :index %></h1>
     <nav class="landmarks">
       <%= link_to 'Designers', designers_path %>
@@ -17,10 +17,10 @@
       <%= link_to 'Events', events_path %>
     </nav>
   </header>
-  <section class="content">
+  <section class="content_container">
     <%= yield %>
   </section>
-  <footer>
+  <footer id="footer">
     <%= link_to 'Admin page', :controller => :admin, :action => :index %>
   </footer>
 </section>

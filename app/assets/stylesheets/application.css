@@ -31,45 +31,76 @@ a:hover {
  SITE TEMPLATE CSS
 */
 
-.wrapper {
+#container {
     width: 900px;
     margin: 0 auto;
-    position: relative;
-    overflow: auto;
 }
 
-.main_header {
+#main_header {
     background-color: #000000;
-    overflow: auto;
-    position: relative;
+    padding: 10px 10px;
 }
 
 .logo {
     display: inline;
-    float: left;
 }
 
 .landmarks {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
+    float: right;
 }
 
 .sidebar {
     float: left;
+    clear: left;
     width: 300px;
+    display: inline;
+}
+
+.content_container {
+    float: left;
+    width: 900px;
     background-color: #444444;
-    height: 400px;
 }
 
 .content {
-    float: left;
+    float: right;
+    width: 600px;
+    background-color: #222222;
+    padding: 10px 20px;
 }
 
-footer {
-    position: fixed;
-    bottom: 0px;
-    background: #000000;
-    height: 30px;
-    width: 100%;
+.group_links {
+    clear: both;
 }
+
+#footer {
+    clear: both;
+    background: #000000;
+    text-align: center;
+    padding: 10px 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

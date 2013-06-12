@@ -1,10 +1,16 @@
-<p id="notice"><%= notice %></p>
-<h2><%= @designer.full_name %></h2>
+<section class="sidebar">
 
-<%= image_tag(@designer.image.complete_name, :class => 'profile_photo') %>
+</section>
+<section class="content">
+  <h2><%= @designer.full_name %></h2>
 
-<p>
-  <%= @designer.biography %>
-</p>
+  <%= image_tag(@designer.image.complete_name, :class => 'profile_photo') %>
 
-<%= link_to 'Back', designers_path %>
+  <p>
+    <%= @designer.biography %>
+  </p>
+
+  <div class="group_links">
+    <%= link_to 'Back', :back %>
+  </div>
+</section>

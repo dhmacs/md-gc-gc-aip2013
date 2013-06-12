@@ -1,8 +1,9 @@
-<h1>All designers</h1>
-<% @designers.each do |designer| %>
-    <div class="designer_item">
-      <div class="img_container"><%= image_tag(designer.image.complete_name, :class => 'thumbnail') %></div>
-      <h4><%= link_to designer.full_name, designer %></h4>
-    </div>
-<% end %>
-<br />
+<section class="content">
+  <h1>All designers</h1>
+  <% @designers.each do |designer| %>
+      <div class="designer_item">
+        <div class="img_container"><%= image_tag(designer.image.complete_name, :class => 'thumbnail') %></div>
+        <h4><%= link_to designer.full_name, designer %></h4>
+      </div>
+  <% end %>
+</section>
