@@ -28,12 +28,12 @@ class ProductsController < ApplicationController
     @rooms_by_partner= Array.new
     @products_by_room_partner = Array.new
 
-    @partner = Partner.find(params[:productor_id])
+    @partner = Partner.find(params[:manufacturer_id])
 
 
     @rooms = Room.all
     @rooms.each do |room|
-      @products_by_room_partner= Product.where("room_id  = ? AND productor_id = ?", room.id, @partner.id)
+      @products_by_room_partner= Product.where("room_id  = ? AND manufacturer_id = ?", room.id, @partner.id)
       if(@products_by_room_partner.count >= 1)
         @rooms_by_partner.push(room)
       end
@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
   end
 
   def our_rooms
-    @group = Group.find(params[:group_id])
+    @group = Group.find(params[:manufacturer_id])
     @rooms = Room.all
     @our_rooms = Array.new
     @our_products = @group.products
@@ -60,14 +60,14 @@ class ProductsController < ApplicationController
 
   def categories_by_room_by_partner
     @room_by_partner= Room.find(params[:room_id])
-    @partner = Partner.find(params[:productor_id])
+    @partner = Partner.find(params[:manufacturer_id])
 
     @categories_by_room_partner = Array.new
     @products_by_category_room_partner = Array.new
 
     @categories = Category.all
     @categories.each do |category|
-      @products_by_category_room_partner= Product.where("room_id  = ? AND productor_id = ? AND category_id = ?", @room_by_partner.id, @partner.id, category.id)
+      @products_by_category_room_partner= Product.where("room_id  = ? AND manufacturer_id = ? AND category_id = ?", @room_by_partner.id, @partner.id, category.id)
       if(@products_by_category_room_partner.count >= 1)
         @categories_by_room_partner.push(category)
       end
@@ -76,11 +76,11 @@ class ProductsController < ApplicationController
     # All the products by a given category, a given room and a given partner
 
     def products_by_category_by_room_by_partner
-      @partner = Partner.find(params[:productor_id])
+      @partner = Partner.find(params[:manufacturer_id])
       @room = Room.find(params[:room_id])
       @category = Category.find(params[:category_id])
 
-      @products_by_category_room_partner = Product.where("productor_id = ? AND room_id = ? AND category_id = ?", @partner.id,@room.id,@category.id)
+      @products_by_category_room_partner = Product.where("manufacturer_id = ? AND room_id = ? AND category_id = ?", @partner.id,@room.id,@category.id)
 
     end
 
@@ -99,6 +99,9 @@ class ProductsController < ApplicationController
     end
   end
 
+  def technical_details
+    @product = Product.find(params[:id])
+  end
   # GET /products/new
   # GET /products/new.json
   def new
@@ -133,7 +136,7 @@ class ProductsController < ApplicationController
 
     is_our_product = params[:product][:is_our_product]
 
-    if is_our_product
+    if is_our_product == 1
       @product.manufacturer = Group.first_or_create!
     else
       @product.manufacturer = Partner.find(params[:product][:manufacturer])
@@ -154,30 +157,26 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.find(params[:id])
-
-    @product = Product.find(params[:id])
+    @product = Product.new
 
     @product.name = params[:product][:name]
     @product.description = params[:product][:description]
 
-    category = Category.find(params[:product][:category_id])
+    @product.category = Category.find(params[:product][:category_id])
 
-    @product.category = category;
+    @product.room = Room.find(params[:product][:room_id])
 
-    room = Room.find(params[:product][:room_id])
-
-    @product.room = room
-
-    designer = Designer.find(params[:product][:designer_id])
-
-    @product.designer = designer
-
-    partner = Partner.find(params[:product][:productor_id])
-
-    @product.productor = partner
+    @product.designer = Designer.find(params[:product][:designer_id])
 
     @product.top_design = params[:product][:top_design]
+
+    is_our_product = params[:product][:is_our_product]
+
+    if is_our_product == 1
+      @product.manufacturer = Group.first_or_create!
+    else
+      @product.manufacturer = Partner.find(params[:product][:manufacturer])
+    end
 
     respond_to do |format|
       if @product.update_attributes(params[:product])

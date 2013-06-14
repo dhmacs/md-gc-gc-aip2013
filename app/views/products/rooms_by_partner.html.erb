@@ -5,7 +5,7 @@
 <ul>
   <% @rooms_by_partner.each do |rbp| %>
       <li>
-        <%=link_to(rbp.name,{:controller => "products", :action => 'categories_by_room_by_partner',:room_id => rbp.id, :productor_id => @partner.id})%>
+        <%=link_to(rbp.name,{:controller => "products", :action => 'categories_by_room_by_partner',:room_id => rbp.id, :manufacturer_id => @partner.id})%>
       </li>
   <% end %>
 </ul>

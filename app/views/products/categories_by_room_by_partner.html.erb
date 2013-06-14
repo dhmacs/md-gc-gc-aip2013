@@ -5,9 +5,9 @@
 <ul>
   <% @categories_by_room_partner.each do |crp| %>
       <li>
-        <%= link_to(crp.name, {:controller => "products", :action => 'products_by_category_by_room_by_partner', :category_id => crp.id, :productor_id => @partner.id, :room_id => @room_by_partner.id})%>
+        <%= link_to(crp.name, {:controller => "products", :action => 'products_by_category_by_room_by_partner', :category_id => crp.id, :manufacturer_id => @partner.id, :room_id => @room_by_partner.id})%>
       </li>
   <% end %>
 </ul>
-  <%= link_to("Back to all rooms by " + @partner.name, {:controller => "products", :action => 'rooms_by_partner', :productor_id => @partner.id}) %>
+  <%= link_to("Back to all rooms by " + @partner.name, {:controller => "products", :action => 'rooms_by_partner', :manufacturer_id => @partner.id}) %>
 </section>
