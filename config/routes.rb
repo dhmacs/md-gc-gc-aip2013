@@ -1,4 +1,8 @@
 MdGcGcAip2013::Application.routes.draw do
+  get "group/entry"
+
+  get "group/show"
+
   get "products/our_rooms"
 
   get "products/all_partners"

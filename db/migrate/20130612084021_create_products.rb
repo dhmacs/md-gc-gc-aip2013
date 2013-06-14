@@ -9,7 +9,6 @@ class CreateProducts < ActiveRecord::Migration
       t.references :category
       t.references :designer
       t.references :productor, :polymorphic => true
-      t.references :services
 
       t.timestamps
     end
