@@ -1,4 +1,16 @@
 MdGcGcAip2013::Application.routes.draw do
+  get "products/our_rooms"
+
+  get "products/all_partners"
+
+  get "products/products_by_category_by_room_by_partner"
+
+  get "products/categories_by_room_by_partner"
+
+  get "products/rooms_by_partner"
+
+  get "products/top_design"
+
   resources :services
 
 

@@ -3,6 +3,8 @@ class CreatePartners < ActiveRecord::Migration
     create_table :partners do |t|
       t.string :name
 
+
+
       t.timestamps
     end
   end

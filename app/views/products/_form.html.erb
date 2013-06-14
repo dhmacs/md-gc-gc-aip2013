@@ -15,6 +15,36 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.radio_button(:top_design, true) %>
+    <%= f.label(:top_design_true, "Si") %>
+    <%= f.radio_button(:top_design, false) %>
+    <%= f.label(:top_design_false, "No") %>
+  </div>
+  <div>
+    <%=collection_select(:product, :category_id, Category.all, :id, :name)  %>
+  </div>
+  <div>
+    <%=collection_select(:product, :room_id, Room.all, :id, :name)  %>
+  </div>
+    <div>
+      <%= collection_select(:product, :designer_id, Designer.all, :id, :full_name) %>
+    </div>
+  <div>
+    <%=collection_select(:product, :productor_id,  Partner.all, :id, :name )  %>
+  </div>
+  <div>
+    <%= collection_select(:product, :service_id, Service.all, :id, :name) %>
+  </div>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

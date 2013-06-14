@@ -1,0 +1,14 @@
+<section class = content>
+<h1>Top Design</h1>
+<p>Find me in app/views/products/top_design.html.erb</p>
+
+
+<ul>
+  <% @products.each do |product| %>
+  <li>
+    <%= link_to product.name, product_path(product)%>
+  </li>
+  <% end %>
+</ul>
+</section>
+

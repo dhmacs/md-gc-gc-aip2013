@@ -1,0 +1,15 @@
+<section class = content>
+<h1><%= @partner.name %> <%=@room.name %> <%=@category.name  %></h1>
+<p>Find me in app/views/products/products_by_category_by_room_by_partner.html.erb</p>
+
+
+<ul>
+  <% @products_by_category_room_partner.each do |product| %>
+      <li>
+        <%= link_to(product.name, product_path(product))%>
+      </li>
+  <% end %>
+</ul>
+
+ <%= link_to("Back to " + @partner.name + " " + @room.name, {:controller => "products", :action => 'categories_by_room_by_partner', :productor_id => @partner.id, :room_id => @room.id}) %>
+</section>

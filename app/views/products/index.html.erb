@@ -1,4 +1,13 @@
-<h1>Listing products</h1>
+
+
+<section class = "content">
+  <h1>Products</h1>
+<ul>
+  <li><%= link_to("All Partners", {:controller => "products", :action => 'all_partners'}) %></li>
+  <li><%= link_to("Top Design", {:controller => "products", :action => 'top_design'}) %></li>
+  <li> Our Product</li>
+</ul>
+
 
 <table>
   <tr>
@@ -21,3 +30,5 @@
 <br />
 
 <%= link_to 'New Product', new_product_path %>
+
+</section>

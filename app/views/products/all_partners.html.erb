@@ -1,0 +1,10 @@
+<section class = content>
+<h1>Fornitures partners</h1>
+<p>Find me in app/views/products/all_partners.html.erb</p>
+
+<ul>
+  <% @partners.each do |partner| %>
+      <li><%= link_to(partner.name, {:controller => "products", :action => 'rooms_by_partner', :productor_id => partner.id}) %></li>
+  <% end %>
+</ul>
+</section>
