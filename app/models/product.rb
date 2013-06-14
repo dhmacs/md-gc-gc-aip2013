@@ -6,5 +6,5 @@ class Product < ActiveRecord::Base
   belongs_to :room
   belongs_to :category
   belongs_to :productor, :polymorphic =>  true
-  has_many :services
+  has_and_belongs_to_many :services
 end

@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @group = Group.where("group_id = ?", '1')
+    @group = Group.find(1)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,18 +41,18 @@ class ProductsController < ApplicationController
   end
 
   def our_rooms
-    @group = Group.find(params[:productor_id])
+    @group = Group.find(params[:group_id])
     @rooms = Room.all
     @our_rooms = Array.new
+    @our_products = @group.products
 
-    @rooms.each do |room|
-      @products_by_room_partner= Product.where("room_id  = ? AND productor_id = ?", room.id, @group.id)
-      if(@products_by_room_partner.count >= 1)
+    @our_products.each do |product|
+      room = product.room
+      if(!@our_rooms.include?(room))
         @our_rooms.push(room)
       end
-
-
     end
+
   end
 
   #All the categories by a given a partner. This method shows only the categories in which there is at least a product
@@ -135,11 +135,21 @@ class ProductsController < ApplicationController
 
     @product.designer = designer
 
-    partner = Partner.find(params[:product][:productor_id])
-
-    @product.productor = partner
-
     @product.top_design = params[:product][:top_design]
+
+    if  params[:product][:productor].begins_with?("Partner:")
+      productor_type = 'Partner'
+      productor_id = params[:product][:productor].split(":")[1].to_i
+    elsif params[:product][:productor].begins_with?("Group:")
+      productor_type = 'Group'
+      productor_id = params[:product][:productor].split(":")[1].to_i
+    end
+
+    params[:product].delete(:productor)
+
+    @product.productor_type = productor_type
+    @product.productor_id = productor_id
+
 
 
     respond_to do |format|

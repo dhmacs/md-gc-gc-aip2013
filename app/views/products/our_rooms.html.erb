@@ -1,2 +1,12 @@
-<h1>Products#our_rooms</h1>
-<p>Find me in app/views/products/our_rooms.html.erb</p>
+<section class = content>
+  <h1>Our Rooms</h1>
+  <p>Find me in app/views/products/our_rooms.html.erb</p>
+
+  <ul>
+    <% @our_rooms.each do |room| %>
+        <li><%= room.name %></li>
+    <% end %>
+  </ul>
+</section>
+
+

@@ -22,10 +22,8 @@
   </div>
 
   <div>
-    <%= f.radio_button(:top_design, true) %>
-    <%= f.label(:top_design_true, "Si") %>
-    <%= f.radio_button(:top_design, false) %>
-    <%= f.label(:top_design_false, "No") %>
+    <%= f.label(:top_design, "Top Design") %>
+    <%= f.check_box(:top_design) %>
   </div>
   <div>
     <%=collection_select(:product, :category_id, Category.all, :id, :name)  %>
@@ -37,12 +35,13 @@
       <%= collection_select(:product, :designer_id, Designer.all, :id, :full_name) %>
     </div>
   <div>
-    <%=collection_select(:product, :productor_id,  Partner.all, :id, :name )  %>
-  </div>
-  <div>
-    <%= collection_select(:product, :service_id, Service.all, :id, :name) %>
-  </div>
 
+
+    <% productor_collection = Partner.all.map{|x| [x.name, "Partner:#{x.id}"]} + Group.all.map{|x| [x.name,"Group:#{x.id}"]}%>
+
+    <%= f.collection_select(:productor, productor_collection, :id, :name) %>
+
+  </div>
 
 
   <div class="actions">
