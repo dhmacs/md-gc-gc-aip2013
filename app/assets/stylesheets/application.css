@@ -49,24 +49,32 @@ a:hover {
     float: right;
 }
 
+.content_container {
+    position: relative;
+    overflow: visible;
+    float: left;
+    width: 900px;
+    min-height: 600px;
+    background-color: #444444;
+}
+
+.content {
+    position: absolute;
+    overflow: visible;
+    bottom: 0px;
+    right: 0px;
+    top: 0px;
+    /*float: right;*/
+    width: 600px;
+    background-color: #222222;
+    padding: 10px 20px;
+}
+
 .sidebar {
     float: left;
     clear: left;
     width: 300px;
     display: inline;
-}
-
-.content_container {
-    float: left;
-    width: 900px;
-    background-color: #444444;
-}
-
-.content {
-    float: right;
-    width: 600px;
-    background-color: #222222;
-    padding: 10px 20px;
 }
 
 .group_links {

@@ -1,3 +1,3 @@
 class Service < ActiveRecord::Base
-  attr_accessible :description, :name
+  attr_accessible :description, :name, :additional_info
 end
