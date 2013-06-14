@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614204149) do
+ActiveRecord::Schema.define(:version => 20130614204534) do
+
+  create_table "abouts", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -46,15 +53,6 @@ ActiveRecord::Schema.define(:version => 20130614204149) do
     t.string   "city"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "group_infos", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.boolean  "is_entry_page"
-    t.integer  "group_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
   end
 
   create_table "groups", :force => true do |t|

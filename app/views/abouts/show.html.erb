@@ -1,0 +1,16 @@
+<section class="content">
+  <p>
+    <b>Title:</b>
+    <%= @about.title %>
+  </p>
+
+  <% @about.images.each do |image|%>
+      <%= image_tag(image.complete_name, :class => 'about_photo') %>
+  <% end %>
+  <p>
+    <b>Description:</b>
+    <%= @about.description %>
+  </p>
+
+  <%= link_to 'Back', abouts_path %>
+</section>
