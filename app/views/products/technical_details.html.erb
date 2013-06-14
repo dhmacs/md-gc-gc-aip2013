@@ -1,0 +1,11 @@
+<section class="sidebar">
+  <%= link_to "Product description", product_path(@product) %>
+  <h4>Designer</h4>
+  <%= link_to @product.designer.full_name, designer_path(@product.designer) %>
+</section>
+
+
+<section class="content">
+<h1><%= @product.name %> technical details</h1>
+<p>Find me in app/views/products/technical_details.html.erb</p>
+</section>

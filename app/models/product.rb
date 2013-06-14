@@ -7,4 +7,5 @@ class Product < ActiveRecord::Base
   belongs_to :category
   belongs_to :manufacturer, :polymorphic =>  true
   has_and_belongs_to_many :services
+  has_many :images, :as => :image_ref
 end

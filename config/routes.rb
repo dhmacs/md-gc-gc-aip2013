@@ -1,9 +1,11 @@
 MdGcGcAip2013::Application.routes.draw do
-  resources :partners
+  resources :categories
 
 
-  resources :groups
+  resources :rooms
 
+
+  get "products/technical_details"
 
   get "group/entry"
 
@@ -28,6 +30,8 @@ MdGcGcAip2013::Application.routes.draw do
 
 
   resources :products
+
+  resources :partners
 
 
   resources :designers do

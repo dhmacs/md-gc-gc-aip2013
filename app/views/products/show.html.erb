@@ -1,5 +1,5 @@
 <section class = sidebar>
-  <p>Structural LINK</p>
+  <%= link_to "Technical Details", {:controller => "products", :action => :technical_details, :id => @product.id} %>
   <h4>Designer</h4>
   <%= link_to @designer.full_name, designer_path(@designer) %>
 </section>
@@ -10,6 +10,8 @@
   <b>Name:</b>
   <%= @product.name %>
 </p>
+
+
 
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
