@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @group = Group.find(1)
+    @group = Group.first_or_create!
 
     respond_to do |format|
       format.html # index.html.erb
@@ -123,33 +123,21 @@ class ProductsController < ApplicationController
     @product.name = params[:product][:name]
     @product.description = params[:product][:description]
 
-    category = Category.find(params[:product][:category_id])
+    @product.category = Category.find(params[:product][:category_id])
 
-    @product.category = category
+    @product.room = Room.find(params[:product][:room_id])
 
-    room = Room.find(params[:product][:room_id])
-
-    @product.room = room
-
-    designer = Designer.find(params[:product][:designer_id])
-
-    @product.designer = designer
+    @product.designer = Designer.find(params[:product][:designer_id])
 
     @product.top_design = params[:product][:top_design]
 
-    if  params[:product][:productor].begins_with?("Partner:")
-      productor_type = 'Partner'
-      productor_id = params[:product][:productor].split(":")[1].to_i
-    elsif params[:product][:productor].begins_with?("Group:")
-      productor_type = 'Group'
-      productor_id = params[:product][:productor].split(":")[1].to_i
+    is_our_product = params[:product][:is_our_product]
+
+    if is_our_product
+      @product.manufacturer = Group.first_or_create!
+    else
+      @product.manufacturer = Partner.find(params[:product][:manufacturer])
     end
-
-    params[:product].delete(:productor)
-
-    @product.productor_type = productor_type
-    @product.productor_id = productor_id
-
 
 
     respond_to do |format|

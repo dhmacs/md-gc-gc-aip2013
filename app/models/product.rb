@@ -5,6 +5,6 @@ class Product < ActiveRecord::Base
   belongs_to :designer
   belongs_to :room
   belongs_to :category
-  belongs_to :productor, :polymorphic =>  true
+  belongs_to :manufacturer, :polymorphic =>  true
   has_and_belongs_to_many :services
 end

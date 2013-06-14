@@ -1,4 +1,10 @@
 MdGcGcAip2013::Application.routes.draw do
+  resources :partners
+
+
+  resources :groups
+
+
   get "group/entry"
 
   get "group/show"

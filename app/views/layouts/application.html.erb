@@ -12,7 +12,8 @@
   <header id="main_header">
     <h1 class="logo"><%= link_to 'Codech', :controller => :home, :action => :index %></h1>
     <nav class="landmarks">
-      <%= link_to 'The group', :controller => :group, :action => :show, :entry => true  %>
+      <%= link_to 'The group', groups_path %>
+      <%= link_to 'Partners', partners_path %>
       <%= link_to 'Products', products_path %>
       <%= link_to 'Designers', designers_path %>
       <%= link_to 'Services', services_path %>

@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.references :room
       t.references :category
       t.references :designer
-      t.references :productor, :polymorphic => true
+      t.references :manufacturer, :polymorphic => true
 
       t.timestamps
     end

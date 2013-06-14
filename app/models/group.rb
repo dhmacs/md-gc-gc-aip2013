@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   attr_accessible :name
 
-  has_many :products, :as => :productor
-  has_many :group_infos
+  # association
+  has_many :partners
+  has_many :products, :as => :manufacturer
 end

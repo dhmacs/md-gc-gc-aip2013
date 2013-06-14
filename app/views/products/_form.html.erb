@@ -1,50 +1,49 @@
 <%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </div>
 
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-
-  <div>
-    <%= f.label(:top_design, "Top Design") %>
-    <%= f.check_box(:top_design) %>
-  </div>
-  <div>
-    <%=collection_select(:product, :category_id, Category.all, :id, :name)  %>
-  </div>
-  <div>
-    <%=collection_select(:product, :room_id, Room.all, :id, :name)  %>
-  </div>
+    <div>
+      <%= f.label(:top_design, 'Top Design') %>
+      <%= f.check_box(:top_design) %>
+    </div>
+    <div>
+      <%=collection_select(:product, :category_id, Category.all, :id, :name)  %>
+    </div>
+    <div>
+      <%=collection_select(:product, :room_id, Room.all, :id, :name)  %>
+    </div>
     <div>
       <%= collection_select(:product, :designer_id, Designer.all, :id, :full_name) %>
     </div>
-  <div>
+    <div>
+      <%= f.label('Our product') %>
+      <%= check_box_tag 'is_our_product' %>
+    </div>
+    <div>
+      <%= f.collection_select(:manufacturer, Partner.all, :id, :name) %>
+    </div>
 
 
-    <% productor_collection = Partner.all.map{|x| [x.name, "Partner:#{x.id}"]} + Group.all.map{|x| [x.name,"Group:#{x.id}"]}%>
-
-    <%= f.collection_select(:productor, productor_collection, :id, :name) %>
-
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
