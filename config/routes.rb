@@ -1,5 +1,11 @@
 MdGcGcAip2013::Application.routes.draw do
+  resources :abouts
+
+
+  resources :partners
   resources :categories
+
+  resources :groups
 
 
   resources :rooms

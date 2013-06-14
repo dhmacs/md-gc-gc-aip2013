@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Codech</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    'application', :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -12,7 +12,7 @@
   <header id="main_header">
     <h1 class="logo"><%= link_to 'Codech', :controller => :home, :action => :index %></h1>
     <nav class="landmarks">
-      <%=# link_to 'The group', groups_path %>
+      <%= link_to 'The group', abouts_path %>
       <%= link_to 'Partners', partners_path %>
       <%= link_to 'Products', products_path %>
       <%= link_to 'Designers', designers_path %>
