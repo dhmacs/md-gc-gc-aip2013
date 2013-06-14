@@ -31,6 +31,7 @@ MdGcGcAip2013::Application.routes.draw do
 
   resources :services
 
+  resources :groups
 
   resources :events
 
