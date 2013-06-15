@@ -21,6 +21,17 @@ class PartnersController < ApplicationController
     end
   end
 
+  # Showing partners
+  def all_partners
+    @partners = Partner.all
+
+    @related = About.all
+
+    respond_to do |format|
+      format.html #all_partners.html.erb
+    end
+  end
+
   # GET /partners/new
   # GET /partners/new.json
   def new
@@ -40,21 +51,22 @@ class PartnersController < ApplicationController
   # POST /partners
   # POST /partners.json
   def create
-    @partner = Partner.new
+    @partner = Partner.new#(params[:partner])
 
     @partner.name = params[:partner][:name]
 
+
     # retrieve image extension
-    extension = params[:partner][:photo].original_filename.split('.').last
+    extension = params[:partner][:logo].original_filename.split('.').last
 
     # create a tmp file
     id = 0
     images_path = Rails.root.join('app', 'assets', 'images')
-    img_name = "partner-#{id.to_s}"
+    img_name = "partner_logo-#{id.to_s}"
 
     while File.exist?(File.join(images_path, "#{img_name}.#{extension}")) do
       id += 1
-      img_name = "partner-#{id.to_s}"
+      img_name = "partner_logo-#{id.to_s}"
     end
 
     # create a new image
@@ -67,7 +79,7 @@ class PartnersController < ApplicationController
 
     # save to temp file
     File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
-      f.write params[:partner][:photo].read
+      f.write params[:partner][:logo].read
     end
 
     respond_to do |format|

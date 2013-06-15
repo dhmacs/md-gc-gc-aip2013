@@ -15,6 +15,8 @@ class AboutsController < ApplicationController
   def show
     @about = About.find(params[:id])
 
+    @other = About.all.select {|item| item.id != @about.id}
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @about }

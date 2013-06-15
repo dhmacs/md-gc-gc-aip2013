@@ -3,6 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .about_photo {
+  float: left;
   height: 150px;
   width: 280px;
+  padding: 5px;
+}
+
+.left_photo {
+  float: left;
+}
+
+.right_photo {
+  float: right;
+}
+
+.description {
+
 }

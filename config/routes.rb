@@ -1,12 +1,16 @@
 MdGcGcAip2013::Application.routes.draw do
-  get "products/our_products_by_category_room"
+  get 'products/our_products_by_category_room'
 
-  get "products/our_categories_by_room"
+  get 'products/our_categories_by_room'
 
   resources :abouts
 
 
-  resources :partners
+  resources :partners do
+    member do
+      get 'all_partners'
+    end
+  end
   resources :categories
 
   resources :groups
@@ -15,23 +19,23 @@ MdGcGcAip2013::Application.routes.draw do
   resources :rooms
 
 
-  get "products/technical_details"
+  get 'products/technical_details'
 
-  get "group/entry"
+  get 'group/entry'
 
-  get "group/show"
+  get 'group/show'
 
-  get "products/our_rooms"
+  get 'products/our_rooms'
 
-  get "products/all_partners"
+  get 'products/all_partners'
 
-  get "products/products_by_category_by_room_by_partner"
+  get 'products/products_by_category_by_room_by_partner'
 
-  get "products/categories_by_room_by_partner"
+  get 'products/categories_by_room_by_partner'
 
-  get "products/rooms_by_partner"
+  get 'products/rooms_by_partner'
 
-  get "products/top_design"
+  get 'products/top_design'
 
   resources :services
 
@@ -39,21 +43,18 @@ MdGcGcAip2013::Application.routes.draw do
 
   resources :events
 
-
   resources :products
-
-  resources :partners
-
 
   resources :designers do
     member do
       get 'designed'
+      get 'management_page'
     end
   end
 
-  get "admin/index"
+  get 'admin/index'
 
-  get "home/index"
+  get 'home/index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

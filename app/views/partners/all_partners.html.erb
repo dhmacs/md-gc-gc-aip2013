@@ -1,0 +1,18 @@
+<section class="sidebar">
+  <ul>
+    <% @related.each do |info| %>
+        <li><%= link_to info.title, info %></li>
+    <% end %>
+  </ul>
+</section>
+<section class="content">
+  <h1>Our partners</h1>
+  <% @partners.each do |partner| %>
+    <div class="partner">
+      <div>
+        <%= image_tag(partner.image.complete_name, :class => 'partner_logo') %>
+      </div>
+      <%= partner.name %>
+    </div>
+  <% end %>
+</section>

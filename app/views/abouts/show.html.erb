@@ -1,16 +1,19 @@
+<section class="sidebar">
+  <ul>
+    <% @other.each do |info| %>
+        <li><%= link_to info.title, info %></li>
+    <% end %>
+    <li><%= link_to 'Partners', all_partners_partner_path %></li>
+  </ul>
+</section>
 <section class="content">
-  <p>
-    <b>Title:</b>
-    <%= @about.title %>
-  </p>
+
+  <h1><%= @about.title %></h1>
 
   <% @about.images.each do |image|%>
       <%= image_tag(image.complete_name, :class => 'about_photo') %>
   <% end %>
-  <p>
-    <b>Description:</b>
+  <p class="description">
     <%= @about.description %>
   </p>
-
-  <%= link_to 'Back', abouts_path %>
 </section>

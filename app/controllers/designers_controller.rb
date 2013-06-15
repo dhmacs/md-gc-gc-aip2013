@@ -78,7 +78,7 @@ class DesignersController < ApplicationController
         format.html { redirect_to @designer, notice: 'Designer was successfully created.' }
         format.json { render json: @designer, status: :created, location: @designer }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @designer.errors, status: :unprocessable_entity }
       end
     end
@@ -119,6 +119,16 @@ class DesignersController < ApplicationController
 
     respond_to do |format|
       format.html # designed.html.erb
+    end
+  end
+
+  # ADMIN /designers/admin
+  def management_page
+    @designers = Designer.all
+
+    respond_to do |format|
+      format.html # management_page.html.erb
+      #format.json { render json: @designers }
     end
   end
 end
