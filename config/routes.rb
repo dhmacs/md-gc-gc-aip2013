@@ -45,6 +45,7 @@ MdGcGcAip2013::Application.routes.draw do
 
   resources :products
 
+  # it should work!
   resources :designers do
     member do
       get 'designed'
