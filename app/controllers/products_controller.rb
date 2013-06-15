@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   end
 
   #All the rooms by a given a partner. This method shows only the rooms in which there is at least a product
-  #distributed by the partner choosen.
+  #distributed by the partner chosen.
 
   def rooms_by_partner
     @rooms_by_partner= Array.new
@@ -33,7 +33,8 @@ class ProductsController < ApplicationController
 
     @rooms = Room.all
     @rooms.each do |room|
-      @products_by_room_partner= Product.where("room_id  = ? AND manufacturer_id = ?", room.id, @partner.id)
+      @products_by_room_partner = @partner.products.where(:room_id => room.id)
+      #Product.where("room_id  = ? AND manufacturer_id = ?", room.id, @partner.id)
       if(@products_by_room_partner.count >= 1)
         @rooms_by_partner.push(room)
       end
@@ -67,7 +68,9 @@ class ProductsController < ApplicationController
 
     @categories = Category.all
     @categories.each do |category|
-      @products_by_category_room_partner= Product.where("room_id  = ? AND manufacturer_id = ? AND category_id = ?", @room_by_partner.id, @partner.id, category.id)
+
+      @products_by_category_room_partner = @partner.products.where(:room_id => @room_by_partner.id, :category_id => category.id)
+
       if(@products_by_category_room_partner.count >= 1)
         @categories_by_room_partner.push(category)
       end
@@ -80,8 +83,7 @@ class ProductsController < ApplicationController
       @room = Room.find(params[:room_id])
       @category = Category.find(params[:category_id])
 
-      @products_by_category_room_partner = Product.where("manufacturer_id = ? AND room_id = ? AND category_id = ?", @partner.id,@room.id,@category.id)
-
+      @products_by_category_room_partner = @partner.products.where(:room_id => @room.id, :category_id => @category.id)
     end
 
 
@@ -134,11 +136,12 @@ class ProductsController < ApplicationController
 
     @product.top_design = params[:product][:top_design]
 
-    is_our_product = params[:product][:is_our_product]
+    is_our_product = params[:is_our_product]
 
-    if is_our_product > 0
+    if is_our_product.to_i > 0
       group = Group.first_or_create!
       #@product.manufacturer = Group.first_or_create!
+      @product.name += '[OUR]'
       group.products << @product
     else
       partner = Partner.find(params[:product][:manufacturer])
