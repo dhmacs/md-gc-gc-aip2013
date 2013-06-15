@@ -4,4 +4,5 @@ class Partner < ActiveRecord::Base
   #association
   belongs_to :group
   has_many :products, :as => :manufacturer
+  has_one :image, :as => :image_ref
 end

@@ -40,7 +40,35 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room = Room.new(params[:room])
+    @room = Room.new
+
+    @room.name = params[:room][:name]
+
+    # retrieve image extension
+    extension = params[:room][:photo].original_filename.split('.').last
+
+    # create a tmp file
+    id = 0
+    images_path = Rails.root.join('app', 'assets', 'images')
+    img_name = "room-#{id.to_s}"
+
+    while File.exist?(File.join(images_path, "#{img_name}.#{extension}")) do
+      id += 1
+      img_name = "room-#{id.to_s}"
+    end
+
+    # create a new image
+    image = Image.new
+    image.name = img_name
+    image.extension = extension
+
+    # create association between designer and its image
+    @room.image = image
+
+    # save to temp file
+    File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
+      f.write params[:room][:photo].read
+    end
 
     respond_to do |format|
       if @room.save
@@ -57,6 +85,34 @@ class RoomsController < ApplicationController
   # PUT /rooms/1.json
   def update
     @room = Room.find(params[:id])
+
+    @room.name = params[:room][:name]
+
+    # retrieve image extension
+    extension = params[:room][:photo].original_filename.split('.').last
+
+    # create a tmp file
+    id = 0
+    images_path = Rails.root.join('app', 'assets', 'images')
+    img_name = "room-#{id.to_s}"
+
+    while File.exist?(File.join(images_path, "#{img_name}.#{extension}")) do
+      id += 1
+      img_name = "room-#{id.to_s}"
+    end
+
+    # create a new image
+    image = Image.new
+    image.name = img_name
+    image.extension = extension
+
+    # create association between designer and its image
+    @room.image = image
+
+    # save to temp file
+    File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
+      f.write params[:room][:photo].read
+    end
 
     respond_to do |format|
       if @room.update_attributes(params[:room])

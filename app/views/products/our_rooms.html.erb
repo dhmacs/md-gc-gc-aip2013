@@ -2,11 +2,13 @@
   <h1>Our Rooms</h1>
   <p>Find me in app/views/products/our_rooms.html.erb</p>
 
-  <ul>
-    <% @our_rooms.each do |room| %>
-        <li><%= link_to room.name,{:controller => "products", :action => 'our_categories_by_room', :room_id => room.id} %></li>
-    <% end %>
-  </ul>
+
+  <% @our_rooms.each do |room| %>
+      <div class="designer_item">
+        <div class="img_container"><%= image_tag(room.image.complete_name, :class => 'thumbnail') %></div>
+        <h4> <%= link_to room.name, {:controller => "products", :action => 'our_categories_by_room', :room_id => room.id} %></h4>
+      </div>
+  <% end %>
 
   <%= link_to 'Back to All Partners', {:controller => "products", :action => 'all_partners'} %>
 </section>
