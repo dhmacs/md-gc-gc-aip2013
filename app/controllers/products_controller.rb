@@ -140,12 +140,9 @@ class ProductsController < ApplicationController
 
     if is_our_product.to_i > 0
       group = Group.first_or_create!
-      #@product.manufacturer = Group.first_or_create!
-      @product.name += '[OUR]'
       group.products << @product
     else
       partner = Partner.find(params[:product][:manufacturer])
-      #@product.manufacturer = Partner.find(params[:product][:manufacturer])
       partner.products << @product
     end
 
