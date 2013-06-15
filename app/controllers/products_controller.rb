@@ -117,19 +117,22 @@ class ProductsController < ApplicationController
 
     @designer = @product.designer
 
-    #@collection = Array.new
+    @collection = Array.new
 
     @guided_tour = false
 
-    if params[:manufacturer_id] && params[:room_id] && params[:category_id]
+    if params[:manufacturer_id] && params[:room_id] && params[:category_id] && params[:manufacturer_type]
+
+      manufacturer_type = params[:manufacturer_type]
       manufacturer_id = params[:manufacturer_id]
       room_id = params[:room_id]
       category_id = params[:category_id]
 
       @guided_tour = true
-      @collection = Product.where(:room_id => room_id, :manufacturer_id => manufacturer_id, :category_id => category_id)
+      @collection = Product.where(:room_id => room_id, :manufacturer_id => manufacturer_id, :category_id => category_id, :manufacturer_type => manufacturer_type)
       current_index = @collection.index(@product)
-      if current_index+1 >= @collection.size
+
+      if current_index + 1 >= @collection.size
         next_index = 0
       else
         next_index = current_index + 1
@@ -195,6 +198,34 @@ class ProductsController < ApplicationController
       partner = Partner.find(params[:product][:manufacturer])
       partner.products << @product
     end
+
+
+    # retrieve image extension
+    extension = params[:product][:photo].original_filename.split('.').last
+
+    # create a tmp file
+    id = 0
+    images_path = Rails.root.join('app', 'assets', 'images')
+    img_name = "product-#{id.to_s}"
+
+    while File.exist?(File.join(images_path, "#{img_name}.#{extension}")) do
+      id += 1
+      img_name = "product-#{id.to_s}"
+    end
+
+    # create a new image
+    image = Image.new
+    image.name = img_name
+    image.extension = extension
+
+    # create association between designer and its image
+    @product.images << image
+
+    # save to temp file
+    File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
+      f.write params[:product][:photo].read
+    end
+
 
 
     respond_to do |format|

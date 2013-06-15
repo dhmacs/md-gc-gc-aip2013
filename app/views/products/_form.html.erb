@@ -42,6 +42,10 @@
       <%= f.collection_select(:manufacturer, Partner.all, :id, :name) %>
     </div>
 
+    <div class="field">
+      <%= f.label :photo %><br />
+      <%= f.file_field :photo %>
+    </div>
 
     <div class="actions">
       <%= f.submit %>

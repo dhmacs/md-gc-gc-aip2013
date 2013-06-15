@@ -40,7 +40,35 @@ class PartnersController < ApplicationController
   # POST /partners
   # POST /partners.json
   def create
-    @partner = Partner.new(params[:partner])
+    @partner = Partner.new
+
+    @partner.name = params[:partner][:name]
+
+    # retrieve image extension
+    extension = params[:partner][:photo].original_filename.split('.').last
+
+    # create a tmp file
+    id = 0
+    images_path = Rails.root.join('app', 'assets', 'images')
+    img_name = "partner-#{id.to_s}"
+
+    while File.exist?(File.join(images_path, "#{img_name}.#{extension}")) do
+      id += 1
+      img_name = "partner-#{id.to_s}"
+    end
+
+    # create a new image
+    image = Image.new
+    image.name = img_name
+    image.extension = extension
+
+    # create association between designer and its image
+    @partner.image = image
+
+    # save to temp file
+    File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
+      f.write params[:partner][:photo].read
+    end
 
     respond_to do |format|
       if @partner.save

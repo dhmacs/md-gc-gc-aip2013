@@ -13,8 +13,8 @@
 
 
    <% if @guided_tour %>
-    <%= link_to '<Prev', product_path(@previous, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
-    <%= link_to 'Next>', product_path(@next, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %> </br>
+    <%= link_to '<Prev', product_path(@previous, :manufacturer_type => @product.manufacturer_type, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
+    <%= link_to 'Next>', product_path(@next, :manufacturer_type => @product.manufacturer_type ,:room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %> </br>
     <% end %>
       <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
