@@ -2,13 +2,13 @@
 <h1><%= @partner.name %> types of room</h1>
 <p>Find me in app/views/products/rooms_by_partner.html.erb</p>
 
-<ul>
+
   <% @rooms_by_partner.each do |rbp| %>
-      <li>
-        <%=link_to(rbp.name,{:controller => "products", :action => 'categories_by_room_by_partner',:room_id => rbp.id, :manufacturer_id => @partner.id})%>
-      </li>
+      <div class="designer_item">
+        <div class="img_container"><%= image_tag(rbp.image.complete_name, :class => 'thumbnail') %></div>
+        <h4> <%=link_to(rbp.name,{:controller => "products", :action => 'categories_by_room_by_partner',:room_id => rbp.id, :manufacturer_id => @partner.id})%></h4>
+      </div>
   <% end %>
-</ul>
 
   <%= link_to 'Back to All Partners', {:controller => "products", :action => 'all_partners'} %>
 </section>
