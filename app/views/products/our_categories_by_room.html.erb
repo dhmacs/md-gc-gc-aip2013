@@ -1,0 +1,14 @@
+<section class="content">
+<h1>Our <%= @our_room.name %> products</h1>
+<p>Find me in app/views/products/our_categories_by_room.html.erb</p>
+
+  <ul>
+    <% @our_categories_by_room.each do |oc| %>
+    <li>
+      <%=link_to oc.name, {:controller => "products", :action => 'our_products_by_category_room', :room_id => @our_room.id, :category_id => oc.id}%>
+    </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Back to Our Rooms", {:controller => "products", :action => 'our_rooms', :manufacturer_id => @group.id} %>
+</section>

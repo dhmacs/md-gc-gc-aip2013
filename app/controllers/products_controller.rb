@@ -76,6 +76,21 @@ class ProductsController < ApplicationController
       end
     end
   end
+
+  #All the categories of our products. This method shows only the categories in which there is at least a product
+  #distributed by us.
+  def our_categories_by_room
+    @group = Group.first_or_create!
+    @our_room = Room.find(params[:room_id])
+    @our_categories_by_room = Array.new
+    @our_products_by_room = Group.first_or_create!.products.where(:room_id => @our_room.id)
+
+    @our_products_by_room.each do |op|
+      if(!@our_categories_by_room.include?(op.category))
+        @our_categories_by_room.push(op.category)
+      end
+    end
+  end
     # All the products by a given category, a given room and a given partner
 
     def products_by_category_by_room_by_partner
@@ -85,6 +100,15 @@ class ProductsController < ApplicationController
 
       @products_by_category_room_partner = @partner.products.where(:room_id => @room.id, :category_id => @category.id)
     end
+
+  #All our products by a given category and a give room.
+  def our_products_by_category_room
+    @group = Group.first_or_create!
+    @room = Room.find(params[:room_id])
+    @category = Category.find(params[:category_id])
+
+    @our_products_by_room_by_category = @group.products.where(:room_id => @room.id, :category_id => @category.id)
+  end
 
 
 

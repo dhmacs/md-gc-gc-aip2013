@@ -1,4 +1,8 @@
 MdGcGcAip2013::Application.routes.draw do
+  get "products/our_products_by_category_room"
+
+  get "products/our_categories_by_room"
+
   resources :abouts
 
 
