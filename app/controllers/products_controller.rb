@@ -110,14 +110,40 @@ class ProductsController < ApplicationController
     @our_products_by_room_by_category = @group.products.where(:room_id => @room.id, :category_id => @category.id)
   end
 
-
-
   # GET /products/1
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
 
     @designer = @product.designer
+
+    #@collection = Array.new
+
+    @guided_tour = false
+
+    if params[:manufacturer_id] && params[:room_id] && params[:category_id]
+      manufacturer_id = params[:manufacturer_id]
+      room_id = params[:room_id]
+      category_id = params[:category_id]
+
+      @guided_tour = true
+      @collection = Product.where(:room_id => room_id, :manufacturer_id => manufacturer_id, :category_id => category_id)
+      current_index = @collection.index(@product)
+      if current_index+1 >= @collection.size
+        next_index = 0
+      else
+        next_index = current_index + 1
+      end
+
+      if current_index < 0
+        prev_index = @collection.size - 1
+      else
+        prev_index = current_index - 1
+      end
+
+      @next = @collection[next_index]
+      @previous = @collection[prev_index]
+    end
 
     respond_to do |format|
       format.html # show.html.erb

@@ -5,7 +5,7 @@
   <ul>
     <% @our_products_by_room_by_category.each do |product| %>
     <li>
-      <%= link_to product.name, product_path(product) %>
+      <%= link_to product.name, product_path(product, :manufacturer_id => product.manufacturer, :category_id => product.category, :room_id => product.room) %>
     </li>
         <% end %>
   </ul>
