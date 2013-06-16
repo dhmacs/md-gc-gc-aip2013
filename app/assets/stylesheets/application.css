@@ -87,10 +87,18 @@
 
 .group_links {
     clear: both;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    margin: 20px;
 }
 
 .transition_links {
     clear: both;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    margin: 20px;
 }
 
 #footer {

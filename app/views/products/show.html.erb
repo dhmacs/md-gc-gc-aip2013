@@ -18,19 +18,33 @@
     <%= @product.description %>
   </p>
 
-  <h2>Photogallery</h2>
-  <% @product.images.each do |image| %>
-      <div class="product_item">
-        <div class="img_container"><%= image_tag(image.complete_name, :class => 'thumbnail') %></div>
-      </div>
-  <% end %>
+  <h3>Photogallery</h3>
+  <div id="photogallery">
+    <ul class="bjqs">
+
+      <% @product.images.each do |image| %>
+          <li><%= image_tag(image.complete_name) %></li>
+      <% end %>
+
+    </ul>
+  </div>
 
   <div class="group_links">
   <% if @guided_tour %>
       <%= link_to '<Prev', product_path(@previous, :manufacturer_type => @product.manufacturer_type, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
-      <%= link_to 'Next>', product_path(@next, :manufacturer_type => @product.manufacturer_type ,:room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %> </br>
+      <%= link_to 'Next>', product_path(@next, :manufacturer_type => @product.manufacturer_type ,:room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
   <% end %>
 
     <%= link_to 'Back', products_path %>
   </div>
 </section>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('#photogallery').bjqs({
+            'height' : 250,
+            'width' : 500,
+            'responsive' : true
+        });
+    });
+</script>

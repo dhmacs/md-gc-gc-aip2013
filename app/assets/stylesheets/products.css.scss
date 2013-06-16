@@ -16,8 +16,11 @@
 }
 
 .img_container {
-  //width: 100px;
-  //margin: 0 auto;
+}
+
+h3 {
+  //font-size: px;
+  font-weight: 200;
 }
 
 .product_item {
@@ -27,4 +30,17 @@
 
 .product_item > h4 {
   margin: 0px;
+}
+
+#photogallery {
+  //overflow: auto;
+  margin: 0 auto;
+  position: relative;
+  width: 600px;
+  height: 400px;
+  //float: left;
+}
+
+#photogallery ul li:before {
+  content: '';
 }
