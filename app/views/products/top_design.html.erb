@@ -3,12 +3,14 @@
 <p>Find me in app/views/products/top_design.html.erb</p>
 
 
-<ul>
   <% @products.each do |product| %>
-  <li>
-    <%= link_to product.name, product_path(product)%>
-  </li>
+      <div class="designer_item">
+        <% image = product.images.first %>
+        <div class="img_container"><%= image_tag(image.complete_name, :class => 'thumbnail') %></div>
+        <h4><%= link_to product.name, product_path(product)%></h4>
+      </div>
   <% end %>
-</ul>
+
+  <%= link_to "Back to Products", {:controller => :products, :action => :index} %>
 </section>
 

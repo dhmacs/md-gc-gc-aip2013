@@ -1,0 +1,12 @@
+<section class="content">
+  <ul>
+    <% @services.each do |service| %>
+        <li>
+          <%= service.name %>
+          <%= link_to 'Edit', edit_service_path(service) %>
+          <%= link_to 'Destroy', service, :method => :delete, data: {confirm: 'Are you sure?'} %>
+        </li>
+    <% end %>
+  </ul>
+  <%= link_to 'New service', new_service_path %>
+</section>

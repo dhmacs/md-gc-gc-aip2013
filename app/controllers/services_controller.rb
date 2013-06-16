@@ -1,4 +1,8 @@
 class ServicesController < ApplicationController
+ def admin_page
+   @services = Service.all
+ end
+
   # GET /services
   # GET /services.json
   def index

@@ -1,4 +1,10 @@
 MdGcGcAip2013::Application.routes.draw do
+  get "services/admin_page"
+
+  get "products/add_service_to_product"
+
+  get "products/choose_service"
+
   get "products/admin_page"
 
   get "products/choose_product"
@@ -6,6 +12,8 @@ MdGcGcAip2013::Application.routes.draw do
   get "products/choose_photo_and_product"
 
   post "products/add_photo_to_product"
+
+  post "products/add_service_to_product"
 
   get "products/add_photo_to_product"
 

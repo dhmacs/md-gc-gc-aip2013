@@ -116,6 +116,20 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:product_id])
 
   end
+
+  #add service to a product
+
+  def add_service_to_product
+    @product = Product.find(params[:product_id])
+
+    @product.services << Service.find(params[:service][:id])
+
+  end
+
+  def choose_service
+    @services = Service.all
+    @product = Product.find(params[:product_id])
+  end
   #add a photo to a product
 
   def add_photo_to_product

@@ -7,4 +7,6 @@
       <li><%= link_to(partner.name, {:controller => "products", :action => 'rooms_by_partner', :manufacturer_id => partner.id}) %></li>
   <% end %>
 </ul>
+
+  <%= link_to "Back to Products", {:controller => :products, :action => :index} %>
 </section>

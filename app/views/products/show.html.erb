@@ -2,6 +2,10 @@
   <%= link_to "Technical Details", {:controller => "products", :action => :technical_details, :id => @product.id} %>
   <h4>Designer</h4>
   <%= link_to @designer.full_name, designer_path(@designer) %>
+  <h4>Services</h4>
+  <% @product.services.each do |service| %>
+  <%= link_to service.name, service_path(service) %> <br />
+   <% end %>
 </section>
 <section class = content>
 <p id="notice"><%= notice %></p>
@@ -10,6 +14,10 @@
   <b>Name:</b>
   <%= @product.name %>
 </p>
+    <h2>Description</h2>
+  <p>
+      <%= @product.description %>
+  </p>
 
   <h2>Photogallery</h2>
   <% @product.images.each do |image| %>
