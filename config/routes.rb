@@ -1,4 +1,6 @@
 MdGcGcAip2013::Application.routes.draw do
+  get "products/admin_page"
+
   get "products/choose_product"
 
   get "products/choose_photo_and_product"

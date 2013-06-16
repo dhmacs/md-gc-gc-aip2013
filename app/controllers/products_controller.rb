@@ -113,7 +113,7 @@ class ProductsController < ApplicationController
 
   #choose product
   def choose_product
-    @products = Product.all
+    @product = Product.find(params[:product_id])
 
   end
   #add a photo to a product
@@ -147,6 +147,10 @@ class ProductsController < ApplicationController
       f.write params[:product][:photo].read
     end
 
+  end
+
+  def admin_page
+    @products = Product.all
   end
   # GET /products/1
   # GET /products/1.json
@@ -192,9 +196,11 @@ class ProductsController < ApplicationController
     end
   end
 
+
   def technical_details
     @product = Product.find(params[:id])
   end
+
   # GET /products/new
   # GET /products/new.json
   def new
@@ -284,23 +290,61 @@ class ProductsController < ApplicationController
   def update
     @product = Product.new
 
-    @product.name = params[:product][:name]
-    @product.description = params[:product][:description]
+    if params[:product][:name]
+      @product.name = params[:product][:name]
+    end
+    if params[:product][:description]
+      @product.description = params[:product][:description]
+    end
 
-    @product.category = Category.find(params[:product][:category_id])
+    if params[:product][:category_id]
+      @product.category = Category.find(params[:product][:category_id])
+    end
 
-    @product.room = Room.find(params[:product][:room_id])
+    if params[:product][:room_id]
+      @product.room = Room.find(params[:product][:room_id])
+    end
+    if params[:product][:top_design]
+     @product.top_design = params[:product][:top_design]
+    end
+    if params[:product][:designer_id]
+      @product.designer = Designer.find(params[:product][:designer_id])
+    end
 
-    @product.designer = Designer.find(params[:product][:designer_id])
+    if params[:product][:is_our_product] || params[:product][:manufacturer]
+      is_our_product = params[:product][:is_our_product]
 
-    @product.top_design = params[:product][:top_design]
+      if is_our_product == 1
+       @product.manufacturer = Group.first_or_create!
+     else
+       @product.manufacturer = Partner.find(params[:product][:manufacturer])
+     end
+    end
 
-    is_our_product = params[:product][:is_our_product]
+    # retrieve image extension
+    extension = params[:product][:photo].original_filename.split('.').last
 
-    if is_our_product == 1
-      @product.manufacturer = Group.first_or_create!
-    else
-      @product.manufacturer = Partner.find(params[:product][:manufacturer])
+    # create a tmp file
+    id = 0
+    images_path = Rails.root.join('app', 'assets', 'images')
+    img_name = "product-#{id.to_s}"
+
+    while File.exist?(File.join(images_path, "#{img_name}.#{extension}")) do
+      id += 1
+      img_name = "product-#{id.to_s}"
+    end
+
+    # create a new image
+    image = Image.new
+    image.name = img_name
+    image.extension = extension
+
+    # create association between designer and its image
+    @product.images << image
+
+    # save to temp file
+    File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
+      f.write params[:product][:photo].read
     end
 
     respond_to do |format|

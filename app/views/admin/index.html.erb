@@ -2,7 +2,7 @@
   <h1>Admin page</h1>
   <%= link_to 'Designers', :controller => :designers, :action => :admin_page %><br/>
   <%= link_to 'Partners', partners_path %><br/>
-  <%= link_to 'Products', new_product_path %><br/>
+  <%= link_to 'Products', {:controller => "products", :action => :admin_page}%><br/>
   <%= link_to 'Rooms', new_room_path %><br/>
   <%= link_to 'Categories', new_category_path %><br/>
   <%= link_to 'The group', abouts_path %><br/>

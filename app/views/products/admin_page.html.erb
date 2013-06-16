@@ -1,0 +1,16 @@
+<h1>Products#admin_page</h1>
+<p>Find me in app/views/products/admin_page.html.erb</p>
+
+<section class="content">
+  <ul>
+    <% @products.each do |product| %>
+        <li>
+          <%= product.name %>
+          <%= link_to 'Edit', edit_product_path(product) %>
+          <%= link_to 'Destroy', product, :method => :delete, data: {confirm: 'Are you sure?'} %>
+          <%= link_to 'Add Photo', {:controller => :products, :action => 'choose_product', :product_id => product.id } %>
+        </li>
+    <% end %>
+  </ul>
+  <%= link_to 'New product', new_product_path %>
+</section>
