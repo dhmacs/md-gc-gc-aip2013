@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :top_design, :description
+  attr_accessible :name, :top_design, :description, :technical_details
 
   # association
   belongs_to :designer

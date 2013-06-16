@@ -1,0 +1,21 @@
+<h1>Products#choose_product</h1>
+<p>Find me in app/views/products/choose_product.html.erb</p>
+
+
+<div>
+  <%= collection_select(:product, :id, @products, :id,:name) %>
+</div>
+
+<div class="field">
+  <%= label_tag :photo %><br />
+  <%= file_field_tag :photo %>
+</div>
+
+
+
+<div>
+  <%= button_to "Submit", :action => 'add_photo_to_product', :photo => :photo,:product_id => :id %>
+</div>
+
+
+

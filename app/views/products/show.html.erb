@@ -11,6 +11,13 @@
   <%= @product.name %>
 </p>
 
+  <h2>Photogallery</h2>
+  <% @product.images.each do |image| %>
+      <div class="designer_item">
+        <div class="img_container"><%= image_tag(image.complete_name, :class => 'thumbnail') %></div>
+      </div>
+  <% end %>
+
 
    <% if @guided_tour %>
     <%= link_to '<Prev', product_path(@previous, :manufacturer_type => @product.manufacturer_type, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>

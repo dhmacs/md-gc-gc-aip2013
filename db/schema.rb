@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20130614204534) do
     t.string   "name"
     t.text     "description"
     t.boolean  "top_design",        :default => false
+    t.text     "technical_details"
     t.integer  "room_id"
     t.integer  "category_id"
     t.integer  "designer_id"

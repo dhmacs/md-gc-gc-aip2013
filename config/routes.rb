@@ -1,4 +1,13 @@
 MdGcGcAip2013::Application.routes.draw do
+  get "products/choose_product"
+
+  get "products/choose_photo_and_product"
+
+  post "products/add_photo_to_product"
+
+  get "products/add_photo_to_product"
+
+  get "products/our_products_by_category_room"
   get 'products/our_products_by_category_room'
 
   get 'products/our_categories_by_room'
@@ -42,6 +51,7 @@ MdGcGcAip2013::Application.routes.draw do
   resources :groups
 
   resources :events
+
 
   resources :products
 

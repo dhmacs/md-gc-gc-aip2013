@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.boolean :top_design, :default => false
+      t.text :technical_details
 
       t.references :room
       t.references :category

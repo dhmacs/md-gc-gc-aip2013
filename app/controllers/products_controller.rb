@@ -110,6 +110,44 @@ class ProductsController < ApplicationController
     @our_products_by_room_by_category = @group.products.where(:room_id => @room.id, :category_id => @category.id)
   end
 
+
+  #choose product
+  def choose_product
+    @products = Product.all
+
+  end
+  #add a photo to a product
+
+  def add_photo_to_product
+    @product = Product.find(params[:product][:id])
+
+    # retrieve image extension
+    extension = params[:product][:photo].original_filename.split('.').last
+
+    # create a tmp file
+    id = 0
+    images_path = Rails.root.join('app', 'assets', 'images')
+    img_name = "product-#{id.to_s}"
+
+    while File.exist?(File.join(images_path, "#{img_name}.#{extension}")) do
+      id += 1
+      img_name = "product-#{id.to_s}"
+    end
+
+    # create a new image
+    image = Image.new
+    image.name = img_name
+    image.extension = extension
+
+    # create association between designer and its image
+    @product.images << image
+
+    # save to temp file
+    File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
+      f.write params[:product][:photo].read
+    end
+
+  end
   # GET /products/1
   # GET /products/1.json
   def show
@@ -188,6 +226,8 @@ class ProductsController < ApplicationController
     @product.designer = Designer.find(params[:product][:designer_id])
 
     @product.top_design = params[:product][:top_design]
+
+    @product.technical_details = params[:product][:technical_details]
 
     is_our_product = params[:is_our_product]
 
