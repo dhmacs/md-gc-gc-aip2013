@@ -14,6 +14,11 @@ class ServicesController < ApplicationController
     end
   end
 
+ #Service GET /services/all_services
+ def all_services
+   @services = Service.all
+ end
+
   # GET /services/1
   # GET /services/1.json
   def show

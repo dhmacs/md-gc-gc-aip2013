@@ -1,22 +1,21 @@
 <section class = sidebar>
-  <%= link_to "Technical Details", {:controller => "products", :action => :technical_details, :id => @product.id} %>
+  <%= link_to 'Technical Details', {:controller => 'products', :action => :technical_details, :id => @product.id} %>
   <h4>Designer</h4>
   <%= link_to @designer.full_name, designer_path(@designer) %>
-  <h4>Services</h4>
-  <% @product.services.each do |service| %>
-  <%= link_to service.name, service_path(service) %> <br />
-   <% end %>
+  <% if @product.services.count > 0 %>
+      <h4>Services</h4>
+      <% @product.services.each do |service| %>
+          <%= link_to service.name, service_path(service) %> <br />
+      <% end %>
+  <% end %>
 </section>
 <section class = content>
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @product.name %>
-</p>
-    <h2>Description</h2>
+
+  <h1><%= @product.name %></h1>
   <p>
-      <%= @product.description %>
+    <%= @product.description %>
   </p>
 
   <h2>Photogallery</h2>
@@ -27,10 +26,11 @@
   <% end %>
 
 
-   <% if @guided_tour %>
-    <%= link_to '<Prev', product_path(@previous, :manufacturer_type => @product.manufacturer_type, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
-    <%= link_to 'Next>', product_path(@next, :manufacturer_type => @product.manufacturer_type ,:room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %> </br>
-    <% end %>
-      <%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+  <% if @guided_tour %>
+      <%= link_to '<Prev', product_path(@previous, :manufacturer_type => @product.manufacturer_type, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
+      <%= link_to 'Next>', product_path(@next, :manufacturer_type => @product.manufacturer_type ,:room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %> </br>
+  <% end %>
+  <div class="group_links">
+    <%= link_to 'Back', products_path %>
+  </div>
 </section>

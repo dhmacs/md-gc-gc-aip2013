@@ -1,16 +1,31 @@
 body {
-  background-color: #000000;
+  background-color: #DDDDDD;
   color: #EEEEEE;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-family: "HelveticaNeue-Light", verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
   line-height: 18px;
   margin: 0px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-family: "HelveticaNeue-Light", verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
   line-height: 18px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+ul li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+ul li:before {
+  content: '> ';
 }
 
 pre {
@@ -21,13 +36,11 @@ pre {
 
 a {
   color: #DDDDDD;
-  &:visited {
-    color: #DDDDDD;
-  }
-  &:hover {
-    color: #ffffff;
-    background-color: #000;
-  }
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
 }
 
 div {

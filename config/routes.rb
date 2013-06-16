@@ -1,4 +1,6 @@
 MdGcGcAip2013::Application.routes.draw do
+  get "services/all_services"
+
   get "services/admin_page"
 
   get "products/add_service_to_product"

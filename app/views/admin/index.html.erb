@@ -1,11 +1,13 @@
 <section class="content">
   <h1>Admin page</h1>
-  <%= link_to 'Designers', :controller => :designers, :action => :admin_page %><br/>
-  <%= link_to 'Partners', partners_path %><br/>
-  <%= link_to 'Products', {:controller => "products", :action => :admin_page}%><br/>
-  <%= link_to 'Rooms', new_room_path %><br/>
-  <%= link_to 'Service',{:controller => :services, :action => :admin_page} %> <br/>
-  <%= link_to 'Categories', new_category_path %><br/>
-  <%= link_to 'The group', abouts_path %><br/>
+  <ul>
+    <li><%= link_to 'Designers admin page', :controller => :designers, :action => :admin_page %></li>
+    <li><%= link_to 'Partners admin page', partners_path %></li>
+    <li><%= link_to 'Products admin page', {:controller => "products", :action => :admin_page}%></li>
+    <li><%= link_to 'Rooms admin page', new_room_path %></li>
+    <li><%= link_to 'Services admin page',{:controller => :services, :action => :admin_page} %></li>
+    <li><%= link_to 'Categories admin page', new_category_path %></li>
+    <li><%= link_to 'The group admin page', abouts_path %></li>
+  </ul>
 </section>
 

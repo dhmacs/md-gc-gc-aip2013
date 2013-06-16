@@ -1,15 +1,8 @@
-<p id="notice"><%= notice %></p>
+<section class="content">
 
-<p>
-  <b>Name:</b>
-  <%= @service.name %>
-</p>
+  <h1><%= @service.name %></h1>
 
-<p>
-  <b>Description:</b>
-  <%= @service.description %>
-</p>
+  <p><%= @service.description %></p>
 
-
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+<%= link_to 'Back to all services', :controller => :services, :action => :all_services %>
+</section>

@@ -13,21 +13,6 @@
  */
 
 /*
-body {
-    margin: 0px;
-    background: #222222;
-    color: #EEEEEE;
-}
-
-a {
-    color: #DDDDDD;
-}
-
-a:hover {
-    color: white;
-} */
-
-/*
  SITE TEMPLATE CSS
 */
 
@@ -38,15 +23,31 @@ a:hover {
 
 #main_header {
     background-color: #000000;
-    padding: 10px 10px;
+    overflow: auto;
 }
 
 .logo {
     display: inline;
 }
 
+.logo > a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+}
+
 .landmarks {
     float: right;
+}
+
+.landmarks > a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.landmarks > a:hover {
+    background-color: #222222;
 }
 
 .content_container {
@@ -55,7 +56,7 @@ a:hover {
     float: left;
     width: 900px;
     min-height: 600px;
-    background-color: #444444;
+    background-color: #333333;
 }
 
 .content {
@@ -64,10 +65,14 @@ a:hover {
     bottom: 0px;
     right: 0px;
     top: 0px;
-    /*float: right;*/
     width: 600px;
-    background-color: #222222;
+    background-color: #111111;
     padding: 10px 20px;
+}
+
+.content h1 {
+    font-size: 24px;
+    font-weight: 200;
 }
 
 .sidebar {
@@ -75,6 +80,8 @@ a:hover {
     clear: left;
     width: 300px;
     display: inline;
+    padding-top: 20px;
+    padding-left: 20px;
 }
 
 .group_links {
@@ -85,9 +92,27 @@ a:hover {
     clear: both;
     background: #000000;
     text-align: center;
-    padding: 10px 10px;
+    padding: 10px;
 }
 
+#footer > p {
+    margin: 0;
+}
+
+
+.admin > a:hover {
+    color: #000000 !important;
+    background-color: #BBBBBB;
+}
+
+.admin > a {
+    color: #000000 !important;
+    padding: 10px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background-color: #777777;
+}
 
 
 
