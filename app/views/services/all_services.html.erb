@@ -1,0 +1,11 @@
+<section class="content">
+  <h1>All services</h1>
+  <ul>
+    <% @services.each do |service| %>
+    <li>
+      <%= link_to service.name, service %>
+    </li>
+    <% end %>
+  </ul>
+</section>
+
