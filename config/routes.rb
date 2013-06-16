@@ -8,6 +8,8 @@ MdGcGcAip2013::Application.routes.draw do
   get "products/add_photo_to_product"
 
   get "products/our_products_by_category_room"
+  get "designers/admin_page"
+
   get 'products/our_products_by_category_room'
 
   get 'products/our_categories_by_room'
@@ -52,14 +54,12 @@ MdGcGcAip2013::Application.routes.draw do
 
   resources :events
 
-
   resources :products
 
   # it should work!
   resources :designers do
     member do
       get 'designed'
-      get 'management_page'
     end
   end
 

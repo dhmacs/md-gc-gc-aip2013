@@ -94,7 +94,7 @@ class DesignersController < ApplicationController
         format.html { redirect_to @designer, notice: 'Designer was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @designer.errors, status: :unprocessable_entity }
       end
     end
@@ -122,13 +122,11 @@ class DesignersController < ApplicationController
     end
   end
 
-  # ADMIN /designers/admin
-  def management_page
+  def admin_page
     @designers = Designer.all
 
     respond_to do |format|
-      format.html # management_page.html.erb
-      #format.json { render json: @designers }
+      format.html # admin_page.html.erb
     end
   end
 end
