@@ -93,6 +93,17 @@
     margin: 20px;
 }
 
+.group_links > a {
+    background-color: #333333;
+    color: #000000;
+    padding: 5px;
+}
+
+.group_links > a:hover {
+    background-color: #DDDDDD;
+    color: #000000;
+}
+
 .transition_links {
     clear: both;
     position: absolute;

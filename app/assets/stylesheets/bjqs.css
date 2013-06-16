@@ -7,6 +7,7 @@
     position:absolute;
     padding: 5px;
     background-color: #111111;
+    opacity:0.7;
 }
 
 #photogallery ul.bjqs-controls.v-centered li a:hover{
@@ -15,7 +16,9 @@
 }
 
 #photogallery ul.bjqs-controls.v-centered li.bjqs-next a {
-    right:0;}
+    right:0;
+}
+
 #photogallery ul.bjqs-controls.v-centered li.bjqs-prev a {
     left:0;
 }
@@ -38,7 +41,6 @@
 
 #photogallery ol.bjqs-markers li a:hover {
     background-color: #DDDDDD;
-    color: #000000;
 }
 
 #photogallery p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
