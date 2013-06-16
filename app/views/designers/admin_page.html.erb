@@ -1,0 +1,12 @@
+<section class="content">
+  <ul>
+    <% @designers.each do |designer| %>
+        <li>
+          <%= designer.full_name %>
+          <%= link_to 'Edit', edit_designer_path(designer) %>
+          <%= link_to 'Destroy', designer, :method => :delete, data: {confirm: 'Are you sure?'} %>
+        </li>
+    <% end %>
+  </ul>
+  <%= link_to 'New designer', new_designer_path %>
+</section>
