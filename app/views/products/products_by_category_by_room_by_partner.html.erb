@@ -4,7 +4,7 @@
 
 
   <% @products_by_category_room_partner.each do |product| %>
-      <div class="designer_item">
+      <div class="product_item">
         <% image = product.images.first %>
         <div class="img_container"><%= image_tag(image.complete_name, :class => 'thumbnail') %></div>
         <h4><%= link_to product.name, product_path(product, :manufacturer_type => product.manufacturer_type, :manufacturer_id => product.manufacturer, :category_id => product.category, :room_id => product.room) %></h4>
@@ -20,5 +20,7 @@
   <% end %>
 </ul>
 
- <%= link_to("Back to " + @partner.name + " " + @room.name, {:controller => "products", :action => 'categories_by_room_by_partner', :manufacturer_id => @partner.id, :room_id => @room.id}) %>
+  <div class = 'group_links'>
+       <%= link_to("Back to " + @partner.name + " " + @room.name, {:controller => "products", :action => 'categories_by_room_by_partner', :manufacturer_id => @partner.id, :room_id => @room.id}) %>
+  </div>
 </section>

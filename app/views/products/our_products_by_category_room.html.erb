@@ -4,12 +4,13 @@
 
 
   <% @our_products_by_room_by_category.each do |product| %>
-      <div class="designer_item">
+      <div class="product_item">
         <% image = product.images.first %>
         <div class="img_container"><%= image_tag(image.complete_name, :class => 'thumbnail') %></div>
         <h4><%= link_to product.name, product_path(product, :manufacturer_id=> product.manufacturer_id, :category_id => product.category, :room_id => product.room, :manufacturer_type => product.manufacturer_type) %></h4>
       </div>
   <% end %>
-
-  <%= link_to "Back to our " + @room.name + " fornitures", {:controller => "products", :action => 'our_categories_by_room', :room_id => @room.id, :manufacturer_id => @group.id} %>
+   <div class="group_links">
+    <%= link_to "Back to our " + @room.name + " fornitures", {:controller => "products", :action => 'our_categories_by_room', :room_id => @room.id, :manufacturer_id => @group.id} %>
+   </div>
 </section>
