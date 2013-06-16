@@ -115,7 +115,7 @@ class DesignersController < ApplicationController
   # DESIGNED /designers/1/designed
   def designed
     @designer = Designer.find(params[:id])
-    #@products = @designer.products
+    @products = @designer.products
 
     respond_to do |format|
       format.html # designed.html.erb

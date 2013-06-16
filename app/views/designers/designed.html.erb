@@ -1,1 +1,13 @@
-<h1>Products designed by <%= @designer.full_name %></h1>
+<section class="content">
+  <h1>Products designed by <%= @designer.full_name %></h1>
+  <ul>
+    <% @products.each do |product| %>
+    <li>
+      <%= link_to product.name, product %>
+    </li>
+    <% end %>
+  </ul>
+  <div class="transition_links">
+    <%= link_to "Back to #{@designer.full_name}", @designer %>
+  </div>
+</section>
