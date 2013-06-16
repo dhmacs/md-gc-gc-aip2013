@@ -119,10 +119,10 @@ class ProductsController < ApplicationController
   #add a photo to a product
 
   def add_photo_to_product
-    @product = Product.find(params[:product][:id])
+    @product = Product.find(params[:product_id])
 
     # retrieve image extension
-    extension = params[:product][:photo].original_filename.split('.').last
+    extension = params[:photo].original_filename.split('.').last
 
     # create a tmp file
     id = 0
@@ -144,7 +144,7 @@ class ProductsController < ApplicationController
 
     # save to temp file
     File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
-      f.write params[:product][:photo].read
+      f.write params[:photo].read
     end
 
   end
