@@ -3,17 +3,19 @@
 
 
   <ul>
-  <% @abouts.each do |about| %>
-      <li>
-        <%= about.title %><br/>
-        <%= link_to 'Show', about %>
-        <%= link_to 'Edit', edit_about_path(about) %>
-        <%= link_to 'Destroy', about, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </li>
-  <% end %>
+    <% @abouts.each do |about| %>
+        <li class="admin_item">
+          <%= about.title %>
+          <%= link_to 'Show', about %>
+          <%= link_to 'Edit', edit_about_path(about) %>
+          <%= link_to 'Destroy', about, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
+    <% end %>
   </ul>
 
   <br />
 
-  <%= link_to 'New About', new_about_path %>
+  <div class="admin_item">
+    <%= link_to 'New About', new_about_path %>
+  </div>
 </section>

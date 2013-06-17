@@ -2,13 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.partner_logo {
-  float: left;
-  width: 140px;
-  height: 45px;
-}
-
 .partner {
   float: left;
-  clear: left;
+  clear: both;
+  overflow: auto;
+  margin-bottom: 30px;
+}
+
+.partner_logo {
+  float: left;
+  overflow: auto;
+
+}
+
+.partner_logo > img {
+  width: 140px;
+  height: 45px;
+  margin-right: 10px;
+}
+
+.partner_info {
+  overflow: auto;
+}
+
+.partner_info p {
+  margin: 0;
 }
