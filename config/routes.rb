@@ -64,9 +64,6 @@ MdGcGcAip2013::Application.routes.draw do
 
   resources :groups
 
-  resources :events
-
-
   resources :products
 
   # it should work!

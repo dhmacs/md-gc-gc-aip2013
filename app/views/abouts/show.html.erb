@@ -6,13 +6,16 @@
     <li><%= link_to 'Partners', all_partners_partner_path %></li>
   </ul>
 </section>
+
 <section class="content">
 
   <h1><%= @about.title %></h1>
 
+  <div class="about_photos">
   <% @about.images.each do |image|%>
-      <%= image_tag(image.complete_name, :class => 'about_photo') %>
+      <%= image_tag(image.complete_name) %>
   <% end %>
+  </div>
   <p class="description">
     <%= @about.description %>
   </p>

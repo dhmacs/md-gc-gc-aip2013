@@ -34,27 +34,6 @@ ActiveRecord::Schema.define(:version => 20130614204534) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "distributors", :force => true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "cap"
-    t.string   "city"
-    t.string   "phone_number"
-    t.string   "fax"
-    t.string   "mail"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "events", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "address"
-    t.string   "city"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false

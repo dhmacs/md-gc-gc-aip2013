@@ -2,21 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.about_photo {
+.about_photos {
+  width: 580px;
+  margin: 0px auto;
+  overflow: auto;
+}
+
+.about_photos > img {
   float: left;
-  height: 150px;
+  height: 170px;
   width: 280px;
   padding: 5px;
 }
 
-.left_photo {
-  float: left;
-}
-
-.right_photo {
-  float: right;
-}
-
 .description {
-
+  width: 570px;
+  margin: 20px auto 0px auto;
+  position: relative;
+  margin-top: 20px;
+  clear: both;
 }
