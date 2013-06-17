@@ -1,5 +1,5 @@
 <section class="sidebar">
-  <%= link_to "Product description", product_path(@product) %>
+  <%= link_to "Product description", product_path(@product, :manufacturer_id=> @product.manufacturer_id, :category_id => @product.category, :room_id => @product.room, :manufacturer_type => @product.manufacturer_type) %>
   <h4>Designer</h4>
   <%= link_to @product.designer.full_name, designer_path(@product.designer) %>
 </section>
@@ -7,5 +7,5 @@
 
 <section class="content">
 <h1><%= @product.name %> technical details</h1>
-<p>Find me in app/views/products/technical_details.html.erb</p>
+<p><%= @product.technical_details %></p>
 </section>

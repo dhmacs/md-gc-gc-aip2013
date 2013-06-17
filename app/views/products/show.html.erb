@@ -1,18 +1,25 @@
 <section class = sidebar>
-  <%= link_to 'Technical Details', {:controller => 'products', :action => :technical_details, :id => @product.id} %>
+  <ul>
+    <li>
+      <%= link_to 'Technical Details', {:controller => 'products', :action => :technical_details, :id => @product.id} %>
+    </li>
+  </ul>
   <h4>Designer</h4>
-  <%= link_to @designer.full_name, designer_path(@designer) %>
+  <ul><li><%= link_to @designer.full_name, designer_path(@designer) %></li></ul>
   <% if @product.services.count > 0 %>
       <h4>Services</h4>
-      <% @product.services.each do |service| %>
-          <%= link_to service.name, service_path(service) %> <br />
-      <% end %>
+      <ul>
+        <% @product.services.each do |service| %>
+            <li><%= link_to service.name, service_path(service) %> </li>
+        <% end %>
+      </ul>
   <% end %>
 </section>
 
 <section class = content>
 
   <h1><%= @product.name %></h1>
+
   <div class="product_rep_img">
     <%= image_tag(@product.images.first.complete_name) %>
   </div>
@@ -41,7 +48,7 @@
         <%= link_to 'Next>', product_path(@next, :manufacturer_type => @product.manufacturer_type ,:room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
     <% end %>
 
-    <%= link_to 'Back to the index', :back %>
+    <a href="<%= @back_url %>">Back to index</a>
   </div>
 </section>
 

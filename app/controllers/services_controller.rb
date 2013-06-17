@@ -92,6 +92,7 @@ class ServicesController < ApplicationController
 
  # GET /services/1/support
   def supports
+    session[:product_back_url] = request.url
     @service = Service.find(params[:service_id])
   end
 end

@@ -114,6 +114,7 @@ class DesignersController < ApplicationController
 
   # DESIGNED /designers/1/designed
   def designed
+    session[:product_back_url] = request.url
     @designer = Designer.find(params[:id])
     @products = @designer.products
 

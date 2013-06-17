@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+
+
   # GET /products
   # GET /products.json
   def index
@@ -14,6 +16,7 @@ class ProductsController < ApplicationController
   #This method shows the list of the products classified as "Top_design" products.
 
   def top_design
+    session[:product_back_url] = request.url
     @products = Product.where(:top_design => true)
   end
 
@@ -94,6 +97,7 @@ class ProductsController < ApplicationController
     # All the products by a given category, a given room and a given partner
 
     def products_by_category_by_room_by_partner
+      session[:product_back_url] = request.url
       @partner = Partner.find(params[:manufacturer_id])
       @room = Room.find(params[:room_id])
       @category = Category.find(params[:category_id])
@@ -103,6 +107,9 @@ class ProductsController < ApplicationController
 
   #All our products by a given category and a give room.
   def our_products_by_category_room
+    session[:product_back_url] = request.url
+
+
     @group = Group.first_or_create!
     @room = Room.find(params[:room_id])
     @category = Category.find(params[:category_id])
@@ -169,6 +176,8 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @back_url = session[:product_back_url]
+
     @product = Product.find(params[:id])
 
     @designer = @product.designer
