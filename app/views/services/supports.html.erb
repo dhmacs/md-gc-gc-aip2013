@@ -1,0 +1,11 @@
+<section class="sidebar">
+  <%= link_to "Back to #{@service.name}", service_path(@service) %>
+</section>
+<section class="content">
+  <h1>Products that have <%= @service.name %></h1>
+  <ul>
+    <% @service.products.each do |product| %>
+        <li><%= link_to product.name, product_path(product) %></li>
+    <% end %>
+  </ul>
+</section>
