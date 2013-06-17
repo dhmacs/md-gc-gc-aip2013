@@ -1,3 +1,8 @@
+<section class="sidebar">
+  <% if @service.products.count > 0 %>
+  <%= link_to 'Products supported', :controller => :services, :action => :supports, :service_id => @service.id %>
+  <% end %>
+</section>
 <section class="content">
 
   <h1><%= @service.name %></h1>

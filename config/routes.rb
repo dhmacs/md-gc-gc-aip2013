@@ -1,4 +1,6 @@
 MdGcGcAip2013::Application.routes.draw do
+  get "services/supports"
+
   get "services/all_services"
 
   get "services/admin_page"

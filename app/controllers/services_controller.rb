@@ -89,4 +89,9 @@ class ServicesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+ # GET /services/1/support
+  def supports
+    @service = params[:service_id]
+  end
 end
