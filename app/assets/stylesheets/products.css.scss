@@ -44,3 +44,23 @@ h3 {
 #photogallery ul li:before {
   content: '';
 }
+
+.thumbnail {
+  height: 100px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.img_container {
+  //width: 100px;
+  //margin: 0 auto;
+}
+
+.partener_item {
+  float: left;
+  margin: 20px;
+}
+
+.partner_item > h4 {
+  margin: 0px;
+}

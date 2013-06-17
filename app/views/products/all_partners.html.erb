@@ -2,9 +2,9 @@
   <h1>Fornitures partners</h1>
 
   <% @partners.each do |partner| %>
-      <div class="product_item">
+      <div class="partner_item">
         <div class="img_container"><%= image_tag(partner.image.complete_name, :class => 'thumbnail') %></div>
-        <h4><%= link_to(partner.name, {:controller => 'products', :action => 'rooms_by_partner', :manufacturer_id => partner.id}) %></h4>
+        <%= link_to(partner.name, {:controller => 'products', :action => 'rooms_by_partner', :manufacturer_id => partner.id}) %>
       </div>
   <% end %>
 
