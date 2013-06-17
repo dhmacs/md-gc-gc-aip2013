@@ -92,6 +92,6 @@ class ServicesController < ApplicationController
 
  # GET /services/1/support
   def supports
-    @service = params[:service_id]
+    @service = Service.find(params[:service_id])
   end
 end
