@@ -9,15 +9,20 @@
       <% end %>
   <% end %>
 </section>
-<section class = content>
-  <p id="notice"><%= notice %></p>
 
+<section class = content>
 
   <h1><%= @product.name %></h1>
-  <p>
-    <%= @product.description %>
-  </p>
+  <div class="product_rep_img">
+    <%= image_tag(@product.images.first.complete_name) %>
+  </div>
+  <div class="product_description">
+    <p>
+      <%= @product.description %>
+    </p>
+  </div>
 
+  <div class="photogallery_label"></div>
   <h3>Photogallery</h3>
   <div id="photogallery">
     <ul class="bjqs">
@@ -31,10 +36,10 @@
   </div>
 
   <div class="group_links">
-  <% if @guided_tour %>
-      <%= link_to '<Prev', product_path(@previous, :manufacturer_type => @product.manufacturer_type, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
-      <%= link_to 'Next>', product_path(@next, :manufacturer_type => @product.manufacturer_type ,:room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
-  <% end %>
+    <% if @guided_tour %>
+        <%= link_to '<Prev', product_path(@previous, :manufacturer_type => @product.manufacturer_type, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
+        <%= link_to 'Next>', product_path(@next, :manufacturer_type => @product.manufacturer_type ,:room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
+    <% end %>
 
     <%= link_to 'Back to the index', :back %>
   </div>
@@ -43,8 +48,8 @@
 <script type="text/javascript">
     jQuery(document).ready(function($) {
         $('#photogallery').bjqs({
-            'height' : 250,
-            'width' : 500,
+            'height' : 220,
+            'width' : 450,
             'responsive' : true
         });
     });
