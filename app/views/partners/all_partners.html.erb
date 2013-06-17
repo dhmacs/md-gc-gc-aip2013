@@ -8,11 +8,18 @@
 <section class="content">
   <h1>Our partners</h1>
   <% @partners.each do |partner| %>
-    <div class="partner">
-      <div>
-        <%= image_tag(partner.image.complete_name, :class => 'partner_logo') %>
+      <div class="partner">
+        <div class="partner_logo">
+          <%= image_tag(partner.image.complete_name) %>
+        </div>
+        <div class="partner_info">
+          <p>
+            <%= partner.description %>
+          </p>
+          <p>
+            <a href="<%= partner.website %>"><%= partner.website %></a>
+          </p>
+        </div>
       </div>
-      <%= partner.name %>
-    </div>
   <% end %>
 </section>
