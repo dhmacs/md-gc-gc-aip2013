@@ -6,7 +6,7 @@
   <% @products_by_category_room_partner.each do |product| %>
       <div class="product_item">
         <% image = product.images.first %>
-        <div class="img_container"><%= image_tag(image.complete_name, :class => 'thumbnail') %></div>
+        <div><%= image_tag(image.complete_name, :class => 'thumbnail') %></div>
         <h4><%= link_to product.name, product_path(product, :manufacturer_type => product.manufacturer_type, :manufacturer_id => product.manufacturer, :category_id => product.category, :room_id => product.room) %></h4>
       </div>
   <% end %>
