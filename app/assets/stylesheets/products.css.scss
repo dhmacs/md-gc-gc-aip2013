@@ -15,11 +15,7 @@
   margin: 0 auto;
 }
 
-.img_container {
-}
-
 h3 {
-  //font-size: px;
   font-weight: 200;
 }
 
@@ -33,34 +29,34 @@ h3 {
 }
 
 #photogallery {
-  //overflow: auto;
   margin: 0 auto;
   position: relative;
   width: 600px;
   height: 400px;
-  //float: left;
 }
 
 #photogallery ul li:before {
   content: '';
 }
 
-.thumbnail {
+.img_container {
+  overflow: auto;
+  float: left;
+  margin-right: 10px;
+}
+
+.img_container > img {
   height: 45px;
   width: 140px;
-  margin: 0 auto;
 }
 
-.img_container {
-  //width: 100px;
-  //margin: 0 auto;
-}
-
-.partener_item {
+.partner_item {
   float: left;
-  margin: 20px;
+  margin-bottom: 10px;
+  clear: both;
 }
 
-.partner_item > h4 {
-  margin: 0px;
+.partner_item p {
+  margin: 10px 0px 0px 0px;
+  overflow: auto;
 }

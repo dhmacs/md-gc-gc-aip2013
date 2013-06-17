@@ -3,8 +3,12 @@
 
   <% @partners.each do |partner| %>
       <div class="partner_item">
-        <div class="img_container"><%= image_tag(partner.image.complete_name, :class => 'thumbnail') %></div>
-        <%= link_to(partner.name, {:controller => 'products', :action => 'rooms_by_partner', :manufacturer_id => partner.id}) %>
+        <div class="img_container">
+          <%= image_tag(partner.image.complete_name, :class => 'thumbnail_partner') %>
+        </div>
+        <p>
+          <%= link_to(partner.name, {:controller => 'products', :action => 'rooms_by_partner', :manufacturer_id => partner.id}) %>
+        </p>
       </div>
   <% end %>
 
