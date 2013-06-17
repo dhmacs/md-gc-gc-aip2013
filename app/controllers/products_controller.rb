@@ -186,15 +186,23 @@ class ProductsController < ApplicationController
 
     @guided_tour = false
 
-    if params[:manufacturer_id] && params[:room_id] && params[:category_id] && params[:manufacturer_type]
+    @guided_tour_designed = false
 
-      manufacturer_type = params[:manufacturer_type]
-      manufacturer_id = params[:manufacturer_id]
-      room_id = params[:room_id]
-      category_id = params[:category_id]
+    if (params[:manufacturer_id] && params[:room_id] && params[:category_id] && params[:manufacturer_type]) || params[:designer_id]
 
-      @guided_tour = true
-      @collection = Product.where(:room_id => room_id, :manufacturer_id => manufacturer_id, :category_id => category_id, :manufacturer_type => manufacturer_type)
+
+      if params[:designer_id]
+        @guided_tour_designed = true
+        @collection = Product.where(:designer_id => params[:designer_id])
+      else
+        @guided_tour = true
+        manufacturer_type = params[:manufacturer_type]
+        manufacturer_id = params[:manufacturer_id]
+        room_id = params[:room_id]
+        category_id = params[:category_id]
+        @collection = Product.where(:room_id => room_id, :manufacturer_id => manufacturer_id, :category_id => category_id, :manufacturer_type => manufacturer_type)
+      end
+
       current_index = @collection.index(@product)
 
       if current_index + 1 >= @collection.size
@@ -212,6 +220,8 @@ class ProductsController < ApplicationController
       @next = @collection[next_index]
       @previous = @collection[prev_index]
     end
+
+
 
     respond_to do |format|
       format.html # show.html.erb

@@ -46,6 +46,9 @@
     <% if @guided_tour %>
         <%= link_to '<Prev', product_path(@previous, :manufacturer_type => @product.manufacturer_type, :room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
         <%= link_to 'Next>', product_path(@next, :manufacturer_type => @product.manufacturer_type ,:room_id => @product.room, :manufacturer_id => @product.manufacturer, :category_id => @product.category) %>
+    <% elsif @guided_tour_designed %>
+        <%= link_to '<Prev', product_path(@previous, :designer_id =>@product.designer) %>
+        <%= link_to 'Next>', product_path(@next, :designer_id =>@product.designer) %>
     <% end %>
 
     <a href="<%= @back_url %>">Back to index</a>

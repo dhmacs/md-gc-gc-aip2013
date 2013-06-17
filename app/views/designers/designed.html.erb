@@ -6,7 +6,7 @@
   <ul>
     <% @products.each do |product| %>
         <li>
-          <%= link_to product.name, product %>
+          <%= link_to product.name, product_path(product, :designer_id => product.designer) %>
         </li>
     <% end %>
   </ul>
