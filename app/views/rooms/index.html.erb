@@ -1,23 +1,19 @@
+<section class="content">
 <h1>Listing rooms</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @rooms.each do |room| %>
-  <tr>
-    <td><%= room.name %></td>
-    <td><%= link_to 'Show', room %></td>
-    <td><%= link_to 'Edit', edit_room_path(room) %></td>
-    <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <ul>
+    <% @rooms.each do |room| %>
+    <li>
+      <%= room.name %>
+      <%= link_to 'Show', room %>
+      <%= link_to 'Edit', edit_room_path(room) %>
+      <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+        <% end %>
+  </ul>
 
 <br />
 
 <%= link_to 'New Room', new_room_path %>
+
+</section>

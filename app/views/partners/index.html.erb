@@ -1,23 +1,17 @@
 <section class="content">
   <h1>Listing partners</h1>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
+  <ul>
     <% @partners.each do |partner| %>
-        <tr>
-          <td><%= partner.name %></td>
-          <td><%= link_to 'Show', partner %></td>
-          <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
-          <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-  </table>
+    <li>
+      <%= partner.name %>
+      <%= link_to 'Show', partner %>
+      <%= link_to 'Edit', edit_partner_path(partner) %>
+      <%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+        <% end %>
+  </ul>
+
 
   <br />
 

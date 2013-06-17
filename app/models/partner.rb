@@ -1,5 +1,5 @@
 class Partner < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :description, :website
 
   #association
   has_one :image, :as => :image_ref

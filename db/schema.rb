@@ -72,9 +72,11 @@ ActiveRecord::Schema.define(:version => 20130614204534) do
 
   create_table "partners", :force => true do |t|
     t.string   "name"
+    t.text     "description"
+    t.string   "website"
     t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "products", :force => true do |t|

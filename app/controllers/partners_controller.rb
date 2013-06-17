@@ -51,9 +51,13 @@ class PartnersController < ApplicationController
   # POST /partners
   # POST /partners.json
   def create
-    @partner = Partner.new#(params[:partner])
+    @partner = Partner.new
 
     @partner.name = params[:partner][:name]
+
+    @partner.description = params[:partner][:description]
+
+    @partner.website = params[:partner][:website]
 
 
     # retrieve image extension
