@@ -3,7 +3,7 @@
 
   <ul>
     <% @rooms.each do |room| %>
-    <li>
+    <li class="admin_item">
       <%= room.name %>
       <%= link_to 'Show', room %>
       <%= link_to 'Edit', edit_room_path(room) %>
@@ -13,7 +13,7 @@
   </ul>
 
 <br />
-
-<%= link_to 'New Room', new_room_path %>
-
+<div class="admin_item">
+    <%= link_to 'New Room', new_room_path %>
+</div>
 </section>
