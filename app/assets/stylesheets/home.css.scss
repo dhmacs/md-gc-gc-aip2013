@@ -2,9 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.home_img {
+.home img {
   width: 900px;
   height: 600px;
+}
 
+.home {
   margin: 0px;
+  padding: 0px;
+}
+
+.home p {
+  font-family: 'Nothing You Could Do', cursive;
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  width: 500px;
+  line-height: 150%;
+  padding: 0px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
 }

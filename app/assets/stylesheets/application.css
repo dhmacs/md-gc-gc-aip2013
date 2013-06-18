@@ -53,8 +53,7 @@
 
 .content_container {
     position: relative;
-    overflow: visible;
-    float: left;
+    /*float: left;*/
     width: 900px;
     min-height: 600px;
     background-color: #333333;

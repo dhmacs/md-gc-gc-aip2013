@@ -325,38 +325,15 @@ class ProductsController < ApplicationController
 
 
     if params[:product][:name]
-      @product.update_attribute(:name, params[:product][:name])
+      @product.update_attributes(:name => params[:product][:name])
     end
 
     if params[:product][:description]
-      @product.update_attribute(:description, params[:product][:description] )
-    end
-
-    if params[:product][:category_id]
-      @product.update_attribute(:category_id, params[:product][:category_id] )
-    end
-
-    if params[:product][:room_id]
-      @product.update_attribute(:room_id, params[:product][:room_id])
-    end
-    if params[:product][:top_design]
-      @product.update_attribute(:top_design, params[:product][:top_design])
-    end
-    if params[:product][:designer_id]
-      @product.update_attribute(:designer_id, params[:product][:designer_id])
-    end
-
-    if params[:product][:is_our_product] || params[:product][:manufacturer]
-      is_our_product = params[:product][:is_our_product]
-
-      if is_our_product == 1
-        @product.update_attribute(:manufacturer, Group.first_or_create!)
-      else
-        @product.update_attribute(:manufacturer,params[:product][:manufacturer])
-      end
+      @product.update_attributes(:description => params[:product][:description] )
     end
 
     @product.update_attribute(:technical_details, params[:product][:technical_details])
+
 
     if params[:product][:photo]
       # retrieve image extension

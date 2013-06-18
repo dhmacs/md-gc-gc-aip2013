@@ -121,14 +121,17 @@ class AboutsController < ApplicationController
   def update
     @about = About.find(params[:id])
 
+    if params[:about][:title]
+      @about.title = params[:about][:title]
+    end
+
+    if params[:about][:description]
+      @about.description = params[:about][:description]
+    end
+
     respond_to do |format|
-      if @about.update_attributes(params[:about])
-        format.html { redirect_to @about, notice: 'About was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @about.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to @about, notice: 'About was successfully updated.' }
+      format.json { head :no_content }
     end
   end
 
