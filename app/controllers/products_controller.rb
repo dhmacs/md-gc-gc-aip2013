@@ -94,16 +94,16 @@ class ProductsController < ApplicationController
       end
     end
   end
-    # All the products by a given category, a given room and a given partner
+  # All the products by a given category, a given room and a given partner
 
-    def products_by_category_by_room_by_partner
-      session[:product_back_url] = request.url
-      @partner = Partner.find(params[:manufacturer_id])
-      @room = Room.find(params[:room_id])
-      @category = Category.find(params[:category_id])
+  def products_by_category_by_room_by_partner
+    session[:product_back_url] = request.url
+    @partner = Partner.find(params[:manufacturer_id])
+    @room = Room.find(params[:room_id])
+    @category = Category.find(params[:category_id])
 
-      @products_by_category_room_partner = @partner.products.where(:room_id => @room.id, :category_id => @category.id)
-    end
+    @products_by_category_room_partner = @partner.products.where(:room_id => @room.id, :category_id => @category.id)
+  end
 
   #All our products by a given category and a give room.
   def our_products_by_category_room
@@ -321,73 +321,79 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.new
+    @product = Product.find(params[:id])
+
 
     if params[:product][:name]
-      @product.name = params[:product][:name]
+      @product.update_attribute(:name, params[:product][:name])
     end
+
     if params[:product][:description]
-      @product.description = params[:product][:description]
+      @product.update_attribute(:description, params[:product][:description] )
     end
 
     if params[:product][:category_id]
-      @product.category = Category.find(params[:product][:category_id])
+      @product.update_attribute(:category_id, params[:product][:category_id] )
     end
 
     if params[:product][:room_id]
-      @product.room = Room.find(params[:product][:room_id])
+      @product.update_attribute(:room_id, params[:product][:room_id])
     end
     if params[:product][:top_design]
-     @product.top_design = params[:product][:top_design]
+      @product.update_attribute(:top_design, params[:product][:top_design])
     end
     if params[:product][:designer_id]
-      @product.designer = Designer.find(params[:product][:designer_id])
+      @product.update_attribute(:designer_id, params[:product][:designer_id])
     end
 
     if params[:product][:is_our_product] || params[:product][:manufacturer]
       is_our_product = params[:product][:is_our_product]
 
       if is_our_product == 1
-       @product.manufacturer = Group.first_or_create!
-     else
-       @product.manufacturer = Partner.find(params[:product][:manufacturer])
-     end
+        @product.update_attribute(:manufacturer, Group.first_or_create!)
+      else
+        @product.update_attribute(:manufacturer,params[:product][:manufacturer])
+      end
     end
 
-    # retrieve image extension
-    extension = params[:product][:photo].original_filename.split('.').last
+    @product.update_attribute(:technical_details, params[:product][:technical_details])
 
-    # create a tmp file
-    id = 0
-    images_path = Rails.root.join('app', 'assets', 'images')
-    img_name = "product-#{id.to_s}"
+    if params[:product][:photo]
+      # retrieve image extension
+      extension = params[:product][:photo].original_filename.split('.').last
 
-    while File.exist?(File.join(images_path, "#{img_name}.#{extension}")) do
-      id += 1
+      # create a tmp file
+      id = 0
+      images_path = Rails.root.join('app', 'assets', 'images')
       img_name = "product-#{id.to_s}"
-    end
 
-    # create a new image
-    image = Image.new
-    image.name = img_name
-    image.extension = extension
+      while File.exist?(File.join(images_path, "#{img_name}.#{extension}")) do
+        id += 1
+        img_name = "product-#{id.to_s}"
+      end
 
-    # create association between designer and its image
-    @product.images << image
+      # create a new image
+      image = Image.new
+      image.name = img_name
+      image.extension = extension
 
-    # save to temp file
-    File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
-      f.write params[:product][:photo].read
+      # create association between designer and its image
+      @product.images << image
+
+      # save to temp file
+      File.open(File.join(images_path, "#{img_name}.#{extension}"), 'wb') do |f|
+        f.write params[:product][:photo].read
+      end
     end
 
     respond_to do |format|
-      if @product.update_attributes(params[:product])
+      #if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+      #else
+      #  format.html { render action: "edit" }
+      #  format.json { render json: @product.errors, status: :unprocessable_entity }
+      #end
     end
   end
 
