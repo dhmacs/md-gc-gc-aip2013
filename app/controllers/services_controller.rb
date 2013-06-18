@@ -56,7 +56,7 @@ class ServicesController < ApplicationController
         format.html { redirect_to @service, notice: 'Service was successfully created.' }
         format.json { render json: @service, status: :created, location: @service }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
@@ -72,7 +72,7 @@ class ServicesController < ApplicationController
         format.html { redirect_to @service, notice: 'Service was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
