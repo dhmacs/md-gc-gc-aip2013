@@ -4,7 +4,7 @@
 
   <% @rooms_by_partner.each do |rbp| %>
       <div class="product_item">
-        <div class="img_container"><%= image_tag(rbp.image.complete_name, :class => 'thumbnail') %></div>
+        <div><%= image_tag(rbp.image.complete_name, :class => 'thumbnail') %></div>
         <h4> <%=link_to(rbp.name,{:controller => "products", :action => 'categories_by_room_by_partner',:room_id => rbp.id, :manufacturer_id => @partner.id})%></h4>
       </div>
   <% end %>

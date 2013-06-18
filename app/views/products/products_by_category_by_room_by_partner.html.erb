@@ -11,15 +11,6 @@
       </div>
   <% end %>
 
-
-<ul>
-  <% @products_by_category_room_partner.each do |product| %>
-      <li>
-        <%= link_to(product.name, product_path(product, :manufacturer_id => product.manufacturer, :category_id => product.category, :room_id => product.room))%>
-      </li>
-  <% end %>
-</ul>
-
   <div class = 'group_links'>
        <%= link_to("Back to " + @partner.name + " " + @room.name, {:controller => "products", :action => 'categories_by_room_by_partner', :manufacturer_id => @partner.id, :room_id => @room.id}) %>
   </div>
